@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">appfoody2</string>
+    <string name="phienban">Phiên bản</string>
+    <string name="dangtai">Đang tải..</string>
 </resources>
