@@ -84,7 +84,10 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
                         Toast.makeText(RegisterActivity2.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         Intent it = new Intent(RegisterActivity2.this, LoginActivity.class);
+                        it.putExtra("email", edEmailDK.getText().toString());
+                        it.putExtra("password", edPassworDK.getText().toString());
                         startActivity(it);
+                        finish();
                     } else {
                         Toast.makeText(RegisterActivity2.this, "Tạo tài khoản thất bại", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();

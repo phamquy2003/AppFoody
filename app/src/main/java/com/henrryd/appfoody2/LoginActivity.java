@@ -42,12 +42,21 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
         mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
+        Intent intent = getIntent();
         edEmailDN = findViewById(R.id.edEmailDK);
         edPasswordDN = findViewById(R.id.edPasswordDK);
         btnDangNhap = findViewById(R.id.btnDangKy);
         txtDangKy = findViewById(R.id.txtDangKy);
         txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
+
+        Intent it = getIntent();
+        Bundle bundle = it.getExtras();
+
+        if (bundle != null)
+        {
+            edEmailDN.setText(it.getExtras().getString("email"));
+            edPasswordDN.setText(it.getExtras().getString("password"));
+        }
 
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,5 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 }
