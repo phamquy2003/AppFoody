@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appfoody2</string>
+    <string name="app_name">Foody</string>
     <string name="phienban">Phiên bản</string>
     <string name="dangtai">Đang tải..</string>
     <string name="dangnhap">ĐĂNG NHẬP</string>
@@ -10,4 +10,15 @@
     <string name="dangky">ĐĂNG KÝ</string>
     <string name="quenmatkhau">Quên mật khẩu?</string>
     <string name="token">EAABsbCS1iHgBOZBr0FVVCgnJt6JHJhhN8AsVVNp2dGkZAXXktbBeCjTJLXNJ7v9XLX2GhVxjMieRczALpCjNy6ZATOc7MzKlgWWACStYmM4NOt1ZC4YzWavKB0mfJ0FxD9omnrNg7Yq9RvSi5iRqdHJZALHQu6dP3zFNVhaouAn78TKa3N8W8H7jtNQZDZD</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+<string name="progressDialog">Đang xủ lý</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

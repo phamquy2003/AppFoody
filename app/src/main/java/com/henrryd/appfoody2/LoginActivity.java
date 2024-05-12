@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
         mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
         edEmailDN = findViewById(R.id.edEmailDK);
         edPasswordDN = findViewById(R.id.edPasswordDK);
         btnDangNhap = findViewById(R.id.btnDangKy);
@@ -65,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void register() {
-        Intent i = new Intent(LoginActivity.this,Register_Activity.class);
+        Intent i = new Intent(LoginActivity.this,RegisterActivity2.class);
         startActivity(i);
 
     }

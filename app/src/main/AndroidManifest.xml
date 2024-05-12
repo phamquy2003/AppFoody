@@ -9,18 +9,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/shortcutf"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/shortcutf"
         android:supportsRtl="true"
         android:theme="@style/Theme.Appfoody2"
         tools:targetApi="31">
 
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.Appfoody2.NoActionBar" />
         <activity
             android:name=".Firstscreen"
             android:exported="true">
@@ -39,12 +39,13 @@
             android:value="@string/token" />
 
         <activity
-            android:name=".Register_Activity"
-            android:exported="false" />
+            android:name=".RegisterActivity2"
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
