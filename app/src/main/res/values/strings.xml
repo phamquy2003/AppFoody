@@ -2,4 +2,12 @@
     <string name="app_name">appfoody2</string>
     <string name="phienban">Phiên bản</string>
     <string name="dangtai">Đang tải..</string>
+    <string name="dangnhap">ĐĂNG NHẬP</string>
+    <string name="hoac">hoặc</string>
+    <string name="dngoogle">Đăng nhập với Google</string>
+    <string name="dnfacebook">Đăng nhập với Facebook</string>
+    <string name="app_id">368421622317134</string>
+    <string name="dangky">ĐĂNG KÝ</string>
+    <string name="quenmatkhau">Quên mật khẩu?</string>
+    <string name="token">EAABsbCS1iHgBOZBr0FVVCgnJt6JHJhhN8AsVVNp2dGkZAXXktbBeCjTJLXNJ7v9XLX2GhVxjMieRczALpCjNy6ZATOc7MzKlgWWACStYmM4NOt1ZC4YzWavKB0mfJ0FxD9omnrNg7Yq9RvSi5iRqdHJZALHQu6dP3zFNVhaouAn78TKa3N8W8H7jtNQZDZD</string>
 </resources>

@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register_Activity">
+    android:background="@drawable/login"
+    app:layoutDescription="@xml/activity_login_scene"
+    tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Tu"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="224dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-110dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edEmailDK"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="244dp"
+            android:drawableLeft="@drawable/baseline_account_circle_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="text"
+            android:scaleType="centerInside" />
+
+        <EditText
+            android:id="@+id/edPasswordDK"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Mật khẩu"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/edNhapLaiMatKhau"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnDangKy"
+            android:layout_width="259dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#62943B"
+            android:text="@string/dangky" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
