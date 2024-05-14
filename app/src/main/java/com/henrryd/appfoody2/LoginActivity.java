@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.henrryd.appfoody2.Dialog.forgotPasswordDialog;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -78,14 +79,23 @@ public class LoginActivity extends AppCompatActivity {
                 register();
             }
         });
+//        txtQuenMatKhau.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openForgotPassDialog(Gravity.CENTER);
+//            }
+//        });
+
         txtQuenMatKhau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openForgotPassDialog(Gravity.CENTER);
+                forgotPasswordDialog dialog = new forgotPasswordDialog(LoginActivity.this,
+                        "",
+                        edEmailDN.getText().toString(),
+                        forgotPasswordDialog.TYPE_EMAIL);
+                dialog.show();
             }
         });
-
-
     }
 
     private void register() {
@@ -93,45 +103,45 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
 
     }
-    private void openForgotPassDialog(int gravity){
-        final Dialog dialog = new Dialog(this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.activity_forgotpassword);
-        Window window = dialog.getWindow();
-        if(window == null){
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        windowAttributes.gravity = gravity;
-        window.setAttributes(windowAttributes);
-
-        if (Gravity.BOTTOM == gravity){
-            dialog.setCancelable(true);
-        }else {
-            dialog.setCancelable(false);
-        }
-
-        EditText edEmail = dialog.findViewById(R.id.edEmail);
-        Button btnExit = dialog.findViewById(R.id.btnExit);
-        Button btnSend = dialog.findViewById(R.id.btnSend);
-
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        dialog.show();
-    }
+//    private void openForgotPassDialog(int gravity){
+//        final Dialog dialog = new Dialog(this);
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialog.setContentView(R.layout.activity_forgotpassword);
+//        Window window = dialog.getWindow();
+//        if(window == null){
+//            return;
+//        }
+//        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+//        windowAttributes.gravity = gravity;
+//        window.setAttributes(windowAttributes);
+//
+//        if (Gravity.BOTTOM == gravity){
+//            dialog.setCancelable(true);
+//        }else {
+//            dialog.setCancelable(false);
+//        }
+//
+//        EditText edEmail = dialog.findViewById(R.id.edEmail);
+//        Button btnExit = dialog.findViewById(R.id.btnExit);
+//        Button btnSend = dialog.findViewById(R.id.btnSend);
+//
+//        btnExit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+//        btnSend.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        dialog.show();
+//    }
 
     private void login() {
         String email, pass;

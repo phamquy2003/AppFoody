@@ -12,6 +12,9 @@ buildscript {
         //     url "URL của kho lưu trữ Maven khác"
         // }
     }
+    dependencies {
+        classpath(libs.google.services)
+    }
     // Các cài đặt khác của buildscript
     // ...
 }

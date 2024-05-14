@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_chi"
+            android:icon="@drawable/baseline_shopping_cart_checkout_24"
+            android:title="Khoản chi" />
+        <item
+            android:id="@+id/nav_thu"
+            android:icon="@drawable/baseline_add_card_24"
+            android:title="Khoản thu" />
+        <item
+            android:id="@+id/nav_thongke"
+            android:icon="@drawable/baseline_bar_chart_24"
+            android:title="Thống kê" />
+
+    </group>
+    <item android:title="About">
+        <menu>
+            <item android:title="Giới thiệu" android:id="@+id/nav_gioithieu" android:icon="@drawable/baseline_account_balance_24"/>
+            <item android:title="Thoaát" android:id="@+id/nav_thoat" android:icon="@drawable/baseline_exit_to_app_24"/>
+        </menu>
+    </item>
+</menu>
