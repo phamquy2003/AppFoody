@@ -20,7 +20,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Firstscreen extends AppCompatActivity {
 
-    Button btnOrder;
     ProgressBar progressBar;
     TextView txtPhienBan;
 
@@ -31,16 +30,10 @@ public class Firstscreen extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_firstscreen);
 
-        btnOrder = findViewById(R.id.btnOrder);
         progressBar = findViewById(R.id.progressBar);
         txtPhienBan = findViewById(R.id.txtPhienBan);
 
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkDataEntered();
-            }
-        });
+;
 
         try {
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(),0);
@@ -58,8 +51,6 @@ public class Firstscreen extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    void checkDataEntered() {
 
-    }
 
 }

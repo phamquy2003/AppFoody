@@ -42,7 +42,9 @@
 
         <activity
             android:name=".RegisterActivity2"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

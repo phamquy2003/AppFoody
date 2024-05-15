@@ -19,15 +19,24 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.AuthResult;
+//import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.AbstractCollection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity2 extends AppCompatActivity implements View.OnClickListener {
 
     Button btnDangKy;
-    EditText edEmailDK, edPassworDK, edConfirmPassword;
-    FirebaseAuth firebaseAuth;
+    EditText edEmailDK, edPasswordDK, edConfirmPassword;
+    FirebaseFirestore firestore;
     ProgressDialog progressDialog;
 
 
@@ -42,16 +51,19 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        firestore = FirebaseFirestore.getInstance();
+        CollectionReference reference = firestore.collection("user");
+
 
         // Khởi tạo ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.progressDialog));
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
+//        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore firestore;
         btnDangKy = findViewById(R.id.btnDangKy);
         edEmailDK = findViewById(R.id.edEmailDK);
-        edPassworDK = findViewById(R.id.edPasswordDK);
+        edPasswordDK = findViewById(R.id.edPasswordDK);
         edConfirmPassword = findViewById(R.id.edConfirmPassword);
 
         btnDangKy.setOnClickListener(this);
@@ -61,7 +73,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         progressDialog.show();
         String email = edEmailDK.getText().toString();
-        String password = edPassworDK.getText().toString();
+        String password = edPasswordDK.getText().toString();
         String confirmPassword = edConfirmPassword.getText().toString();
 
         if (email.trim().length() == 0 || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -77,21 +89,25 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             Toast.makeText(this, "Mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
         } else {
-            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            Map<String, String> mymap = new HashMap<String , String>();
+//                mymap.put("name",edName.getText().toString());
+            mymap.put("username", edEmailDK.getText().toString());
+            mymap.put("pass", edPasswordDK.getText().toString());
+            mymap.put("avatar", "ss_"+(int)(Math.random()*10-1));
+            firestore.collection("user").add(mymap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(RegisterActivity2.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                        Intent it = new Intent(RegisterActivity2.this, LoginActivity.class);
-                        it.putExtra("email", edEmailDK.getText().toString());
-                        it.putExtra("password", edPassworDK.getText().toString());
-                        startActivity(it);
-                        finish();
-                    } else {
-                        Toast.makeText(RegisterActivity2.this, "Tạo tài khoản thất bại", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
+                public void onSuccess(DocumentReference documentReference) {
+                    Toast.makeText(RegisterActivity2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(RegisterActivity2.this, LoginActivity.class);
+                    it.putExtra("acc",edEmailDK.getText().toString());
+                    it.putExtra("pass",edPasswordDK.getText().toString());
+                    startActivity(it);
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(RegisterActivity2.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                 }
             });
         }
