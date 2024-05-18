@@ -8,25 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:325854354874:android:ffd4c8e6be2ce3b9d11183",
-        "android_client_info": {
-          "package_name": "com.example.testfirebase"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB56vvevQM7QjvauqfRfdqQATEYCib3hm4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:325854354874:android:9cc5dfd2b4e43e8bd11183",
         "android_client_info": {
           "package_name": "com.henrryd.appfoody2"
