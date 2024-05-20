@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RadioGroup
+        android:id="@+id/group_tab_radio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.120000005">
+
+        <RadioButton
+            android:id="@+id/rd_moinhat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/change_bgr_tab"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/latest"
+            android:textColor="@drawable/changetext_radio_home2" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#C3BDBD">
+
+        </View>
+
+        <RadioButton
+            android:id="@+id/rd_danhmuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/change_bgr_tab"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/list"
+            android:textColor="@drawable/changetext_radio_home2" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#A6A0A0" />
+
+        <RadioButton
+            android:id="@+id/rd_khuvuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/change_bgr_tab"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/khuvuc"
+            android:textColor="@drawable/changetext_radio_home2" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="aaaaaaaaaaaaaaaa"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="227dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group_tab_radio"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/nearby"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/nearby"
+                android:textAllCaps="false"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/blog"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/blog"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/delivery"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/delivery"
+                android:textAllCaps="false"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/game"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/gamefun"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/reviews"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/reviews"
+                android:textAllCaps="false"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@mipmap/topmember"
+                android:drawablePadding="10dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:text="@string/topmember"
+                android:textColor="#5E5858"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+<!--    <Toolbar-->
+<!--        android:id="@+id/toolbar2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@color/maincolor"-->
+<!--        android:clipChildren="true">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            app:srcCompat="@drawable/ic_logo_f2" />-->
+
+<!--        <RadioGroup-->
+<!--            android:id="@+id/grwhere_food"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:background="@drawable/custom_radiogroup"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/rbWhere"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/custom_radio_odau"-->
+<!--                android:checked="true"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:text="@string/odau"-->
+<!--                android:textColor="@drawable/changetext_radio_home" />-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/rbFood"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/custom_radio_angi"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:text="@string/angi"-->
+<!--                android:textColor="@drawable/changetext_radio_home" />-->
+
+<!--        </RadioGroup>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="22dp"-->
+<!--            android:layout_height="22dp"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_marginRight="15dp"-->
+<!--            app:srcCompat="@drawable/ic_cong2" />-->
+
+<!--    </Toolbar>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
