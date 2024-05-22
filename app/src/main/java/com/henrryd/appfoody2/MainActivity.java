@@ -1,7 +1,6 @@
 package com.henrryd.appfoody2;
 
 
-import static com.henrryd.appfoody2.R.id.rbWhere;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -71,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPagerHome.addOnPageChangeListener(this);
         grwhere_food.setOnCheckedChangeListener(this);
 
+
+
     }
 
     @Override
@@ -118,5 +119,5 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
             viewPagerHome.setCurrentItem(0);
         }
 
-        }
     }
+}

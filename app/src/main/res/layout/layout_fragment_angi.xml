@@ -73,8 +73,9 @@
 
 
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="227dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="408dp"
+        android:layout_height="199dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -193,60 +194,14 @@
 
 
     </LinearLayout>
-<!--    <Toolbar-->
-<!--        android:id="@+id/toolbar2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:background="@color/maincolor"-->
-<!--        android:clipChildren="true">-->
 
-<!--        <ImageView-->
-<!--            android:layout_width="35dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            app:srcCompat="@drawable/ic_logo_f2" />-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="411dp"-->
+<!--        android:layout_height="331dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"-->
+<!--        app:layout_constraintVertical_bias="0.100000024">-->
 
-<!--        <RadioGroup-->
-<!--            android:id="@+id/grwhere_food"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:background="@drawable/custom_radiogroup"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <RadioButton-->
-<!--                android:id="@+id/rbWhere"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/custom_radio_odau"-->
-<!--                android:checked="true"-->
-<!--                android:clickable="true"-->
-<!--                android:focusable="true"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingRight="15dp"-->
-<!--                android:text="@string/odau"-->
-<!--                android:textColor="@drawable/changetext_radio_home" />-->
-
-<!--            <RadioButton-->
-<!--                android:id="@+id/rbFood"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/custom_radio_angi"-->
-<!--                android:clickable="true"-->
-<!--                android:focusable="true"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingRight="15dp"-->
-<!--                android:text="@string/angi"-->
-<!--                android:textColor="@drawable/changetext_radio_home" />-->
-
-<!--        </RadioGroup>-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="22dp"-->
-<!--            android:layout_height="22dp"-->
-<!--            android:layout_gravity="right"-->
-<!--            android:layout_marginRight="15dp"-->
-<!--            app:srcCompat="@drawable/ic_cong2" />-->
-
-<!--    </Toolbar>-->
+<!--    </androidx.recyclerview.widget.RecyclerView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
