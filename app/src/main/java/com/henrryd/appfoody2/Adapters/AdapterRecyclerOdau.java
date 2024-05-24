@@ -42,7 +42,7 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter< AdapterRecyclerOd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenQuanAnOdau;
-        public ViewHolder(@NonNull View itemView) {
+         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenQuanAnOdau = itemView.findViewById(R.id.txtTenQuanAnOdau);
         }

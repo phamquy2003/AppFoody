@@ -13,7 +13,7 @@ import com.henrryd.appfoody2.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OdauController {
+public class  OdauController {
     Context context;
     QuanAnModel quanAnModel;
 

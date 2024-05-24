@@ -10,6 +10,7 @@ import com.henrryd.appfoody2.other.user;
 import com.henrryd.appfoody2.R;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.henrryd.appfoody2.other.custom_Picture;
 
 import java.lang.reflect.Type;
 
@@ -23,9 +24,9 @@ public class MyApplication extends Application {
         super.onCreate();
 
         DataLocalManager.init(getApplicationContext());
-//        CustomPicture.init(getApplicationContext());
+        custom_Picture.init(getApplicationContext());
 
-        String tmpuser = DataLocalManager.getInstance().getUser();
+        String tmpuser = DataLocalManager.get_user();
         if (tmpuser != null)
             if (tmpuser != null){
                 Gson gson = new Gson();
@@ -34,21 +35,21 @@ public class MyApplication extends Application {
             }
 
 
-//        createNotificationChannel();
+        createNotificationChannel();
     }
 
-//    private void createNotificationChannel() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            CharSequence name = getString(R.string.channel_name);
-//            String description = getString(R.string.channel_description);
-//            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-//            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-//            channel.setDescription(description);
-//            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-//            if (notificationManager != null) {
-//                notificationManager.createNotificationChannel(channel);
-//            }
-//        }
-//    }
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.app_name);
+            String description = getString(R.string.menu_slideshow);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
 
 }

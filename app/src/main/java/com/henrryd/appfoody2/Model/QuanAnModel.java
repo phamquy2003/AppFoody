@@ -1,6 +1,9 @@
 package com.henrryd.appfoody2.Model;
 
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -9,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.henrryd.appfoody2.Controller.Interfaces.OdauInterface;
+import com.henrryd.appfoody2.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,23 +93,41 @@ public class QuanAnModel {
     }
 
     public void getDanhSachQuanAn(OdauInterface odauInterface){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("quanans");
 
-        ValueEventListener valueEventListener = new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataSnapshot dataSnapshotQuanAn = dataSnapshot.child("quanans");
-                for (DataSnapshot valueQuanAn:dataSnapshotQuanAn.getChildren()){
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot valueQuanAn:snapshot.getChildren()){
                     QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
-
                     odauInterface.getDanhSachQuanAnModel(quanAnModel);
                 }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-        };
+        });
+//        ValueEventListener valueEventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                DataSnapshot dataSnapshotQuanAn = dataSnapshot.child("quanans");
+//
+//                for (DataSnapshot valueQuanAn:dataSnapshotQuanAn.getChildren()){
+//                    QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
+//
+//                    odauInterface.getDanhSachQuanAnModel(quanAnModel);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        };
     }
 
 

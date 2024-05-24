@@ -9,36 +9,15 @@
     tools:layout_editor_absoluteY="64dp"
     tools:showIn="@layout/app_bar_main">
 
-
-
-    <fragment
-        android:id="@+id/nav_host_fragment_content_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:navGraph="@navigation/mobile_navigation">
-
-    </fragment>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_home"
-        android:layout_width="wrap_content"
-        android:layout_height="575dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="64dp">
-
-    </androidx.viewpager.widget.ViewPager>
     <Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/maincolor"
-        android:clipChildren="true">
+        android:clipChildren="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
             android:layout_width="35dp"
@@ -90,4 +69,26 @@
             app:srcCompat="@drawable/ic_cong2" />
 
     </Toolbar>
+
+    <fragment
+        android:id="@+id/nav_host_fragment_content_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar2"
+        app:navGraph="@navigation/mobile_navigation" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

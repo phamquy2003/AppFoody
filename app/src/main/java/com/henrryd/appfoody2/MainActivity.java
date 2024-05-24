@@ -3,7 +3,10 @@ package com.henrryd.appfoody2;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.RadioButton;
@@ -12,6 +15,7 @@ import android.widget.RadioGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,6 +26,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.henrryd.appfoody2.Adapters.AdapterViewHome;
 import com.henrryd.appfoody2.databinding.ActivityMainBinding;
+import com.henrryd.appfoody2.other.DataLocalManager;
+import com.henrryd.appfoody2.other.MyApplication;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
 
@@ -37,18 +43,16 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d("MainActivity", "Calling DataLocalManager.init");
+        DataLocalManager.init(this);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
-            }
-        });
+
+        Toolbar toolbar = binding.appBarMain.toolbar;
+        setSupportActionBar(toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -70,10 +74,28 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPagerHome.addOnPageChangeListener(this);
         grwhere_food.setOnCheckedChangeListener(this);
 
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.acction_logout){
+                    log_out();
+                }
+                return false;
+            }
 
+
+        });
 
     }
 
+    private void log_out() {
+        Log.d("MainActivity", "Logging out");
+        DataLocalManager.remove_user();
+        Intent it = new Intent(MainActivity.this, LoginActivity.class);
+        MyApplication.User = null;
+        startActivity(it);
+        finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

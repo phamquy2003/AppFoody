@@ -7,7 +7,7 @@ buildscript {
     repositories {
         // Thêm kho lưu trữ Maven Central
         mavenCentral()
-        // Các kho lưu trữ khác nếu cần
+        google()
         // maven {
         //     url "URL của kho lưu trữ Maven khác"
         // }

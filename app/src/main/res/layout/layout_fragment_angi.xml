@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical"> <!-- Adjust padding as necessary -->
 
     <RadioGroup
         android:id="@+id/group_tab_radio"
@@ -12,12 +12,7 @@
         android:layout_height="40dp"
         android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.120000005">
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rd_moinhat"
@@ -26,16 +21,16 @@
             android:layout_weight="1"
             android:background="@drawable/change_bgr_tab"
             android:button="@android:color/transparent"
+            android:drawableBottom="@drawable/icon"
             android:gravity="center"
+            android:paddingBottom="5dp"
             android:text="@string/latest"
             android:textColor="@drawable/changetext_radio_home2" />
 
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:background="#C3BDBD">
-
-        </View>
+            android:background="#C3BDBD" />
 
         <RadioButton
             android:id="@+id/rd_danhmuc"
@@ -44,7 +39,9 @@
             android:layout_weight="1"
             android:background="@drawable/change_bgr_tab"
             android:button="@android:color/transparent"
+            android:drawableBottom="@drawable/icon"
             android:gravity="center"
+            android:paddingBottom="5dp"
             android:text="@string/list"
             android:textColor="@drawable/changetext_radio_home2" />
 
@@ -60,23 +57,21 @@
             android:layout_weight="1"
             android:background="@drawable/change_bgr_tab"
             android:button="@android:color/transparent"
+            android:drawableBottom="@drawable/icon"
             android:gravity="center"
+            android:paddingBottom="5dp"
             android:text="@string/khuvuc"
             android:textColor="@drawable/changetext_radio_home2" />
 
     </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="aaaaaaaaaaaaaaaa"
-        android:layout_height="wrap_content"/>
-
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="408dp"
-        android:layout_height="199dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
         android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.61"
@@ -193,15 +188,12 @@
         </LinearLayout>
 
 
-    </LinearLayout>
+    </LinearLayout>>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="411dp"-->
-<!--        android:layout_height="331dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"-->
-<!--        app:layout_constraintVertical_bias="0.100000024">-->
-
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAnGi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp" />
+</LinearLayout>
