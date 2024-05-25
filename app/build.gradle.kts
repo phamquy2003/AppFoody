@@ -51,7 +51,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-analytics")
-
+    implementation("com.google.firebase:firebase-storage")
     // Other dependencies
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation("com.facebook.android:facebook-login:[8,9)")

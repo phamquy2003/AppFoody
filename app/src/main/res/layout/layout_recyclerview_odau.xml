@@ -1,172 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
+
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="6.7"
-                android:gravity="center"
-                android:background="@drawable/bgr_circle"
-                android:textColor="@color/white"
                 android:layout_margin="5dp"
-                />
+                android:background="@drawable/bgr_circle"
+                android:gravity="center"
+                android:text="6.7"
+                android:textColor="@color/white" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                >
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/txtTenQuanAnOdau"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogo house"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="124 Thái Hà, Đống Đa"/>
+                    android:text="124 Thái Hà, Đống Đa" />
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="3.5 km"
-                android:gravity="bottom"/>
+                android:gravity="bottom"
+                android:text="3.5 km" />
         </LinearLayout>
+
         <ImageView
+            android:id="@+id/imageHinhQuanAnOdau"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src = "@mipmap/khucbach"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="fitXY"
+            android:src="@mipmap/khucbach" />
 
         <Button
+            android:id="@+id/btnOderOdau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#F44336"
-            app:cornerRadius="5dp"
             android:text="@string/order"
-            android:textColor="@color/white"/>
+            android:visibility="gone"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="6.7"
-                android:gravity="center"
-                android:src = "@drawable/backgorund"
-                android:textColor="@color/white"
                 android:layout_margin="5dp"
-                />
+                android:gravity="center"
+                android:src="@drawable/backgorund"
+                android:text="6.7"
+                android:textColor="@color/white" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                >
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogo house"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="124 Thái Hà, Đống Đa"/>
+                    android:text="124 Thái Hà, Đống Đa" />
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text= "8.0"
-                />
+                android:text="8.0" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="6.7"
-                android:gravity="center"
-                android:src = "@drawable/backgorund"
-                android:textColor="@color/white"
                 android:layout_margin="5dp"
-                />
+                android:gravity="center"
+                android:src="@drawable/backgorund"
+                android:text="6.7"
+                android:textColor="@color/white" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                >
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogo house"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="124 Thái Hà, Đống Đa"/>
+                    android:text="124 Thái Hà, Đống Đa" />
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="3.5"
-                />
+                android:text="3.5" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            >
+            android:layout_marginLeft="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="112"
-                android:layout_weight="1"
-                android:drawablePadding="5dp"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/fbimage"
+                android:drawablePadding="5dp"
                 android:padding="5dp"
-                android:drawableLeft="@mipmap/fbimage"/>
+                android:text="112" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="112"
-                android:layout_weight="1"
-                android:drawablePadding="5dp"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/comment"
+                android:drawablePadding="5dp"
                 android:padding="5dp"
-                android:drawableLeft="@mipmap/comment"/>
+                android:text="112" />
         </LinearLayout>
 
     </LinearLayout>
