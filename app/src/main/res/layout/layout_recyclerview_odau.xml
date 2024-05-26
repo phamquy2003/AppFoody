@@ -74,11 +74,13 @@
             app:cornerRadius="5dp" />
 
         <LinearLayout
+            android:id="@+id/containerComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageUser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
@@ -95,6 +97,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTitleComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogo house"
@@ -102,6 +105,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtContentComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="124 Thái Hà, Đống Đa" />
@@ -110,17 +114,20 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtPoint"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="8.0" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/containerComment2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageUser2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
@@ -137,6 +144,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTitleComment2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogo house"
@@ -144,6 +152,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtContentComment2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="124 Thái Hà, Đống Đa" />
@@ -152,6 +161,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtPoint2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="3.5" />
@@ -163,6 +173,7 @@
             android:layout_marginLeft="50dp">
 
             <TextView
+                android:id="@+id/txtTotalImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -173,6 +184,7 @@
                 android:text="112" />
 
             <TextView
+                android:id="@+id/txtTotalComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

@@ -22,12 +22,12 @@
             android:exported="true"
             android:theme="@style/Theme.Appfoody2.NoActionBar"
             >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity
@@ -50,7 +50,9 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

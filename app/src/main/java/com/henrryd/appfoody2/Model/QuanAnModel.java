@@ -1,19 +1,13 @@
 package com.henrryd.appfoody2.Model;
 
-
 import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.henrryd.appfoody2.Controller.Interfaces.OdauInterface;
-import com.henrryd.appfoody2.MainActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,19 +16,15 @@ public class QuanAnModel {
     String giodongcua, giomocua, tenquanan, videogioithieu, maquanan;
     List<String> tienich;
     List<String> hinhanhquanan;
+    List<BinhLuanModel> binhLuanModelList;
     Long luotthich;
     DatabaseReference nodeRoot;
 
-    public List<String> getHinhanhquanan() {
-        return hinhanhquanan;
-    }
-
-    public void setHinhanhquanan(List<String> hinhanhquanan) {
-        this.hinhanhquanan = hinhanhquanan;
-    }
-    public QuanAnModel(){
+    public QuanAnModel() {
         nodeRoot = FirebaseDatabase.getInstance().getReference();
     }
+
+    // Getters and Setters
 
     public boolean isGiaohang() {
         return giaohang;
@@ -100,6 +90,22 @@ public class QuanAnModel {
         this.luotthich = luotthich;
     }
 
+    public List<String> getHinhanhquanan() {
+        return hinhanhquanan;
+    }
+
+    public void setHinhanhquanan(List<String> hinhanhquanan) {
+        this.hinhanhquanan = hinhanhquanan;
+    }
+
+    public List<BinhLuanModel> getBinhLuanModelList() {
+        return binhLuanModelList;
+    }
+
+    public void setBinhLuanModelList(List<BinhLuanModel> binhLuanModelList) {
+        this.binhLuanModelList = binhLuanModelList;
+    }
+
     public void getDanhSachQuanAn(OdauInterface odauInterface) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("quanans");
@@ -110,10 +116,9 @@ public class QuanAnModel {
                 for (DataSnapshot valueQuanAn : snapshot.getChildren()) {
                     QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
                     if (quanAnModel != null) {
-                        // Thiết lập mã quán ăn
                         quanAnModel.setMaquanan(valueQuanAn.getKey());
 
-                        // Lấy hình ảnh của quán ăn hiện tại
+                        // Fetch images
                         DatabaseReference hinhAnhRef = database.getReference("hinhanhquanans").child(valueQuanAn.getKey());
                         hinhAnhRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -126,12 +131,49 @@ public class QuanAnModel {
                                     }
                                 }
                                 quanAnModel.setHinhanhquanan(hinhanhlist);
-                                odauInterface.getDanhSachQuanAnModel(quanAnModel);
+
+                                // Fetch comments
+                                DatabaseReference binhluanRef = database.getReference("binhluans").child(quanAnModel.getMaquanan());
+                                binhluanRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshotBinhLuan) {
+                                        List<BinhLuanModel> binhLuanModels = new ArrayList<>();
+                                        for (DataSnapshot valueBinhluan : snapshotBinhLuan.getChildren()) {
+                                            BinhLuanModel binhLuanModel = valueBinhluan.getValue(BinhLuanModel.class);
+                                            if (binhLuanModel != null) {
+                                                // Fetch member details
+                                                DatabaseReference thanhVienRef = database.getReference("thanhviens").child(binhLuanModel.getMauser());
+                                                thanhVienRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshotThanhVien) {
+                                                        ThanhVienModel thanhVienModel = snapshotThanhVien.getValue(ThanhVienModel.class);
+                                                        binhLuanModel.setThanhVienModel(thanhVienModel);
+                                                        binhLuanModels.add(binhLuanModel);
+                                                        if (binhLuanModels.size() == snapshotBinhLuan.getChildrenCount()) {
+                                                            quanAnModel.setBinhLuanModelList(binhLuanModels);
+                                                            odauInterface.getDanhSachQuanAnModel(quanAnModel);
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                        // Handle error if any
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        // Handle error if any
+                                    }
+                                });
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-                                // Xử lý lỗi nếu có
+                                // Handle error if any
                             }
                         });
                     }
@@ -140,28 +182,8 @@ public class QuanAnModel {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Xử lý lỗi nếu có
+                // Handle error if any
             }
         });
-//        ValueEventListener valueEventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                DataSnapshot dataSnapshotQuanAn = dataSnapshot.child("quanans");
-//
-//                for (DataSnapshot valueQuanAn:dataSnapshotQuanAn.getChildren()){
-//                    QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
-//
-//                    odauInterface.getDanhSachQuanAnModel(quanAnModel);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        };
     }
-
-
 }
