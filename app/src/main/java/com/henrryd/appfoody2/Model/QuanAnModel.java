@@ -1,5 +1,6 @@
 package com.henrryd.appfoody2.Model;
 
+import android.location.Location;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,16 @@ public class QuanAnModel {
     List<BinhLuanModel> binhLuanModelList;
     Long luotthich;
     DatabaseReference nodeRoot;
+
+    public List<ChiNhanhQuanAnModel> getChiNhanhQuanAnModelList() {
+        return chiNhanhQuanAnModelList;
+    }
+
+    public void setChiNhanhQuanAnModelList(List<ChiNhanhQuanAnModel> chiNhanhQuanAnModelList) {
+        this.chiNhanhQuanAnModelList = chiNhanhQuanAnModelList;
+    }
+
+    List<ChiNhanhQuanAnModel> chiNhanhQuanAnModelList;
 
     public QuanAnModel() {
         nodeRoot = FirebaseDatabase.getInstance().getReference();
@@ -106,7 +117,7 @@ public class QuanAnModel {
         this.binhLuanModelList = binhLuanModelList;
     }
 
-    public void getDanhSachQuanAn(OdauInterface odauInterface) {
+    public void getDanhSachQuanAn(OdauInterface odauInterface, Location vitrihientai) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("quanans");
 
@@ -162,6 +173,37 @@ public class QuanAnModel {
                                                 });
                                             }
                                         }
+
+                                        // Fetch branch information
+                                        DatabaseReference chiNhanhRef = database.getReference("chinhanhquanans").child(quanAnModel.getMaquanan());
+                                        chiNhanhRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshotChiNhanh) {
+                                                List<ChiNhanhQuanAnModel> chiNhanhQuanAnModelList = new ArrayList<>();
+                                                for (DataSnapshot valueChiNhanhQuanAn : dataSnapshotChiNhanh.getChildren()) {
+                                                    ChiNhanhQuanAnModel chiNhanhQuanAnModel = valueChiNhanhQuanAn.getValue(ChiNhanhQuanAnModel.class);
+                                                    if (chiNhanhQuanAnModel != null) {
+                                                        chiNhanhQuanAnModelList.add(chiNhanhQuanAnModel);
+
+                                                        // Calculate distance
+                                                        Location vitriquanan = new Location("");
+                                                        vitriquanan.setLatitude(chiNhanhQuanAnModel.getLatitude());
+                                                        vitriquanan.setLongitude(chiNhanhQuanAnModel.getLongitude());
+                                                        float khoangcach = vitrihientai.distanceTo(vitriquanan) / 1000; // in kilometers
+                                                        Log.d("kiemtra", khoangcach + " km - " + chiNhanhQuanAnModel.getDiachi());
+                                                        chiNhanhQuanAnModel.setKhoangcach((double) khoangcach);
+
+                                                    }
+
+                                                }
+                                                quanAnModel.setChiNhanhQuanAnModelList(chiNhanhQuanAnModelList);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                // Handle error if any
+                                            }
+                                        });
                                     }
 
                                     @Override

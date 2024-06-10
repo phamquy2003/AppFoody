@@ -19,9 +19,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.henrryd.appfoody2.Model.BinhLuanModel;
+import com.henrryd.appfoody2.Model.ChiNhanhQuanAnModel;
 import com.henrryd.appfoody2.Model.QuanAnModel;
 import com.henrryd.appfoody2.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,9 +33,10 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
     int resource;
 
     public AdapterRecyclerOdau(List<QuanAnModel> quanAnModelList, int resource) {
-        this.quanAnModelList = quanAnModelList;
+        this.quanAnModelList = quanAnModelList != null ? quanAnModelList : new ArrayList<>();
         this.resource = resource;
     }
+
 
     @NonNull
     @Override
@@ -80,6 +83,19 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             holder.containerComment.setVisibility(View.GONE);
             holder.containerComment2.setVisibility(View.GONE);
         }
+        if (quanAnModel.getChiNhanhQuanAnModelList() != null && !quanAnModel.getChiNhanhQuanAnModelList().isEmpty()) {
+            ChiNhanhQuanAnModel chiNhanhQuanAnModelTam = quanAnModel.getChiNhanhQuanAnModelList().get(0);
+            for (ChiNhanhQuanAnModel chiNhanhQuanAnModel : quanAnModel.getChiNhanhQuanAnModelList()) {
+                if (chiNhanhQuanAnModelTam.getKhoangcach() > chiNhanhQuanAnModel.getKhoangcach()) {
+                    chiNhanhQuanAnModelTam = chiNhanhQuanAnModel;
+                }
+            }
+            holder.txtDiaChiQuanAn.setText(chiNhanhQuanAnModelTam.getDiachi());
+            holder.txtKhoangCachQuanAn.setText(String.format("%.1f",chiNhanhQuanAnModelTam.getKhoangcach()) + " km");
+        } else {
+            holder.txtDiaChiQuanAn.setText("Chưa cập nhật địa chỉ");
+            holder.txtKhoangCachQuanAn.setText("");
+        }
     }
 
     private void loadFirebaseImage(ImageView imageView, String path) {
@@ -105,7 +121,7 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTenQuanAnOdau, txtTitleComment, txtTitleComment2, txtContentComment, txtContentComment2, txtPoint, txtPoint2;
+        TextView txtTenQuanAnOdau, txtTitleComment, txtTitleComment2, txtContentComment, txtContentComment2, txtPoint, txtPoint2, txtDiaChiQuanAn, txtKhoangCachQuanAn;
         Button btnOderOdau;
         ImageView imageHinhQuanAnOdau;
         CircleImageView circleImageUser, circleImageUser2;
@@ -126,6 +142,8 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             containerComment2 = itemView.findViewById(R.id.containerComment2);
             txtPoint = itemView.findViewById(R.id.txtPoint);
             txtPoint2 = itemView.findViewById(R.id.txtPoint2);
+            txtDiaChiQuanAn = itemView.findViewById(R.id.txtDiaChiQuanAn);
+            txtKhoangCachQuanAn = itemView.findViewById(R.id.txtKhoangCachQuanAn);
         }
     }
 }

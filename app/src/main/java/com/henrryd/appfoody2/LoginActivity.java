@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txtDangKy, txtQuenMatKhau;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

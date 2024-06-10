@@ -1,6 +1,9 @@
 package com.henrryd.appfoody2.Controller;
 
 import android.content.Context;
+import android.location.Location;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +15,7 @@ import com.henrryd.appfoody2.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class  OdauController {
     Context context;
@@ -22,7 +26,7 @@ public class  OdauController {
         this.quanAnModel = new QuanAnModel();
     }
 
-    public void getDanhSachQuanAnController(final RecyclerView recyclerOdau) {
+    public void getDanhSachQuanAnController(final RecyclerView recyclerOdau, final ProgressBar progressBar, Location vitrihientai) {
         final List<QuanAnModel> quanAnModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerOdau.setLayoutManager(layoutManager);
@@ -34,9 +38,13 @@ public class  OdauController {
             public void getDanhSachQuanAnModel(QuanAnModel quanAnModel) {
                 quanAnModelList.add(quanAnModel);
                 adapterRecyclerOdau.notifyDataSetChanged(); // Notify the adapter that data has changed
+
+                progressBar.setVisibility(View.GONE);
             }
         };
 
-        quanAnModel.getDanhSachQuanAn(odauInterface);
+        quanAnModel.getDanhSachQuanAn(odauInterface, vitrihientai);
+
+        progressBar.setVisibility(View.VISIBLE);
     }
 }

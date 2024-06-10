@@ -52,6 +52,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-storage")
+
     // Other dependencies
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation("com.facebook.android:facebook-login:[8,9)")
@@ -61,5 +62,8 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
-    implementation("androidx.core:core:1.3.2")
+
+    // Core library
+    implementation("androidx.core:core:1.10.1")  // Thêm dependency androidx.core mới nhất
+    implementation ("com.google.android.gms:play-services-location:18.0.0")
 }

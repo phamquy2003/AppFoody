@@ -38,7 +38,8 @@
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Mật khẩu"
-            android:inputType="text" />
+            android:inputType="text"
+            android:password="true" />
 
         <Button
             android:id="@+id/btnDangKy"
