@@ -47,7 +47,7 @@ public class Firstscreen extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        int checkPermissionCoarseLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int checkPermissionCoarseLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
         if (checkPermissionCoarseLocation != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_LOCATION);
         } else {
