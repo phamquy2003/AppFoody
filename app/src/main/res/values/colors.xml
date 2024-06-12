@@ -11,5 +11,8 @@
     <color name="yellow">#CABB39</color>
     <color name="xanhduong">#4CA7EF</color>
     <color name="red">#F60404</color>
+    <color name="DarkBlue">#00008B</color>
+    <color name="SkyBlue">#87CEEB</color>
+    <color name="PowderBlue">#B0E0E6</color>
     <color name="maincolor">#62943B</color>
 </resources>

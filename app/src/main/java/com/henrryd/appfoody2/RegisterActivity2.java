@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.henrryd.appfoody2.Controller.DangKyController;
 import com.henrryd.appfoody2.Model.ThanhVienModel;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +36,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
     private FirebaseFirestore firestore;
     private ProgressDialog progressDialog;
     private DangKyController dangKyController;
+    private TextView btnSignIn;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -53,10 +57,19 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
         edEmailDK = findViewById(R.id.edEmailDK);
         edPasswordDK = findViewById(R.id.edPasswordDK);
         edConfirmPassword = findViewById(R.id.edConfirmPassword);
-
+        btnSignIn = findViewById(R.id.btnSignIn);
         dangKyController = new DangKyController();
 
         btnDangKy.setOnClickListener(this);
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(RegisterActivity2.this, LoginActivity.class);
+                startActivity(it);
+                finish();
+            }
+        });
     }
 
     @Override

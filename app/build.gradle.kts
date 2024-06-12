@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.henrryd.appfoody2"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "4.1.0"

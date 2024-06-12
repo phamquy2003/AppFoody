@@ -4,6 +4,8 @@ package com.henrryd.appfoody2;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.henrryd.appfoody2.Adapters.AdapterViewHome;
+import com.henrryd.appfoody2.BroadcastReceiverFoody.LowBatteryReceiver;
+import com.henrryd.appfoody2.BroadcastReceiverFoody.NetworkChangeReceiver;
 import com.henrryd.appfoody2.databinding.ActivityMainBinding;
 import com.henrryd.appfoody2.other.DataLocalManager;
 import com.henrryd.appfoody2.other.MyApplication;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     RadioButton rbWhere;
     RadioButton rbFood;
     RadioGroup grwhere_food;
+    private NetworkChangeReceiver receiver;
+    private LowBatteryReceiver lowBatteryReceiver;
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -85,6 +91,19 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
 
         });
+
+        // Tạo BroadcastReceiver
+        receiver = new NetworkChangeReceiver();
+        // Đăng ký BroadcastReceiver
+        IntentFilter filterinternet = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(receiver, filterinternet);
+
+
+        // Tạo LowBatteryReceiver
+        lowBatteryReceiver = new LowBatteryReceiver();
+        // Đăng ký LowBatteryReceiver
+        IntentFilter filterbattery = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        registerReceiver(lowBatteryReceiver, filterbattery);
 
     }
 
