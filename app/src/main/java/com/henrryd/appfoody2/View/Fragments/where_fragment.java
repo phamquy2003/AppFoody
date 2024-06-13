@@ -1,6 +1,7 @@
 package com.henrryd.appfoody2.View.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -32,7 +34,10 @@ public class where_fragment extends Fragment {
         odauController = new OdauController(getContext());
         progressBar = view.findViewById(R.id.progressBar);
         return view;
+
+
     }
+
 
     @Override
     public void onStart() {
@@ -55,7 +60,7 @@ public class where_fragment extends Fragment {
             Log.d("kiemtraodau", "Latitude: " + latitude + ", Longitude: " + longitude);
 
             odauController = new OdauController(getContext());
-            odauController.getDanhSachQuanAnController(recyclerOdau, progressBar, vitrihientai);
+            odauController.getDanhSachQuanAnController(getContext(), recyclerOdau, progressBar, vitrihientai);
         } catch (NumberFormatException e) {
             Log.e("kiemtraodau", "Invalid latitude or longitude format", e);
         }

@@ -1,5 +1,7 @@
 package com.henrryd.appfoody2.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -22,6 +24,7 @@ import com.henrryd.appfoody2.Model.BinhLuanModel;
 import com.henrryd.appfoody2.Model.ChiNhanhQuanAnModel;
 import com.henrryd.appfoody2.Model.QuanAnModel;
 import com.henrryd.appfoody2.R;
+import com.henrryd.appfoody2.View.Fragments.ChiTietQuanAn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +34,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOdau.ViewHolder> {
     List<QuanAnModel> quanAnModelList;
     int resource;
+    Context context;
 
-    public AdapterRecyclerOdau(List<QuanAnModel> quanAnModelList, int resource) {
+    public AdapterRecyclerOdau(Context context, List<QuanAnModel> quanAnModelList, int resource) {
         this.quanAnModelList = quanAnModelList != null ? quanAnModelList : new ArrayList<>();
         this.resource = resource;
+        this.context = context;
     }
 
 
@@ -74,14 +79,30 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
                 BinhLuanModel binhLuanModel2 = quanAnModel.getBinhLuanModelList().get(1);
                 holder.txtTitleComment2.setText(binhLuanModel2.getTieude());
                 holder.txtContentComment2.setText(binhLuanModel2.getNoidung());
-                holder.txtPoint2.setText(binhLuanModel.getChamdiem() + "");
+                holder.txtPoint2.setText(binhLuanModel2.getChamdiem() + "");
                 if (binhLuanModel2.getThanhVienModel() != null) {
                     loadFirebaseImage(holder.circleImageUser2, "thanhvien/" + binhLuanModel2.getThanhVienModel().getHinhanh());
                 }
+
             }
+            holder.txtTotalComment.setText(quanAnModel.getBinhLuanModelList().size()+ "");
+
+            int tongsobinhluan = 0;
+            double tongdiem = 0;
+            for (BinhLuanModel binhLuanModel1 : quanAnModel.getBinhLuanModelList()){
+                tongsobinhluan += binhLuanModel1.getHinhanhBinhLuanList().size();
+                tongdiem += binhLuanModel1.getChamdiem();
+            }
+            double diemtrungbinh = tongdiem/quanAnModel.getBinhLuanModelList().size();
+            holder.txtAvgPoint.setText(String.format("%.1f",diemtrungbinh ));
+            if (tongsobinhluan > 0){
+                holder.txtTotalImage.setText(tongsobinhluan + "");
+            }
+
         }else {
             holder.containerComment.setVisibility(View.GONE);
             holder.containerComment2.setVisibility(View.GONE);
+            holder.txtTotalComment.setText("0");
         }
         if (quanAnModel.getChiNhanhQuanAnModelList() != null && !quanAnModel.getChiNhanhQuanAnModelList().isEmpty()) {
             ChiNhanhQuanAnModel chiNhanhQuanAnModelTam = quanAnModel.getChiNhanhQuanAnModelList().get(0);
@@ -96,6 +117,14 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             holder.txtDiaChiQuanAn.setText("Chưa cập nhật địa chỉ");
             holder.txtKhoangCachQuanAn.setText("");
         }
+        holder.txtTenQuanAnOdau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iChiTienQuanAn  = new Intent(context, ChiTietQuanAn.class);
+                iChiTienQuanAn.putExtra("quanan", quanAnModel);
+                context.startActivity(iChiTienQuanAn);
+            }
+        });
     }
 
     private void loadFirebaseImage(ImageView imageView, String path) {
@@ -121,7 +150,7 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTenQuanAnOdau, txtTitleComment, txtTitleComment2, txtContentComment, txtContentComment2, txtPoint, txtPoint2, txtDiaChiQuanAn, txtKhoangCachQuanAn;
+        TextView txtTenQuanAnOdau, txtTitleComment, txtTitleComment2, txtContentComment, txtContentComment2, txtPoint, txtPoint2, txtDiaChiQuanAn, txtKhoangCachQuanAn, txtTotalImage, txtTotalComment, txtAvgPoint;
         Button btnOderOdau;
         ImageView imageHinhQuanAnOdau;
         CircleImageView circleImageUser, circleImageUser2;
@@ -144,6 +173,9 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             txtPoint2 = itemView.findViewById(R.id.txtPoint2);
             txtDiaChiQuanAn = itemView.findViewById(R.id.txtDiaChiQuanAn);
             txtKhoangCachQuanAn = itemView.findViewById(R.id.txtKhoangCachQuanAn);
+            txtTotalImage = itemView.findViewById(R.id.txtTotalImage);
+            txtTotalComment = itemView.findViewById(R.id.txtTotalComment);
+            txtAvgPoint = itemView.findViewById(R.id.txtAvgPoint);
         }
     }
 }

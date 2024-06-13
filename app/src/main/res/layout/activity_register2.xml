@@ -18,10 +18,21 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edEmailDK"
+            android:id="@+id/edName"
             android:layout_width="286dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="244dp"
+            android:drawableLeft="@drawable/baseline_account_circle_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Họ và tên"
+            android:inputType="text"
+            android:scaleType="centerInside" />
+        <EditText
+            android:id="@+id/edEmailDK"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:drawableLeft="@drawable/baseline_account_circle_24"
             android:drawablePadding="10dp"
             android:ems="10"

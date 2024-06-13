@@ -16,15 +16,16 @@ public class BinhLuanModel {
 
     String mabinhluan;
 
-    public List<String> getHinhanhList() {
-        return hinhanhList;
+
+    public List<String> getHinhanhBinhLuanList() {
+        return hinhanhBinhLuanList;
     }
 
-    public void setHinhanhList(List<String> hinhanhList) {
-        this.hinhanhList = hinhanhList;
+    public void setHinhanhBinhLuanList(List<String> hinhanhBinhLuanList) {
+        this.hinhanhBinhLuanList = hinhanhBinhLuanList;
     }
 
-    List<String> hinhanhList;
+    List<String> hinhanhBinhLuanList;
 
     public String getMauser() {
         return mauser;

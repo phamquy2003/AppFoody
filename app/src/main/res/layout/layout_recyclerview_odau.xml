@@ -18,12 +18,13 @@
             android:padding="5dp">
 
             <TextView
+                android:id="@+id/txtAvgPoint"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/bgr_circle"
                 android:gravity="center"
-                android:text="6.7"
+                android:text="0"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -54,7 +55,8 @@
                 android:id="@+id/txtKhoangCachQuanAn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="bottom"
+                android:gravity="center"
+                android:drawableLeft="@drawable/location"
                 android:text="3.5 km" />
         </LinearLayout>
 
@@ -172,6 +174,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginLeft="50dp">
 
             <TextView
@@ -183,7 +186,7 @@
                 android:drawableLeft="@mipmap/fbimage"
                 android:drawablePadding="5dp"
                 android:padding="5dp"
-                android:text="112" />
+                android:text="0" />
 
             <TextView
                 android:id="@+id/txtTotalComment"
@@ -194,7 +197,7 @@
                 android:drawableLeft="@mipmap/comment"
                 android:drawablePadding="5dp"
                 android:padding="5dp"
-                android:text="112" />
+                android:text="0" />
         </LinearLayout>
 
     </LinearLayout>

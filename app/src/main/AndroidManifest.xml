@@ -10,32 +10,30 @@
 
     <uses-feature android:name="android.hardware.location" />
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.BATTERY_LOW" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.NOTIFY" />
 
     <application
         android:allowBackup="true"
-        android:largeHeap="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ic_logo_f2"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/ic_logo_f2"
         android:supportsRtl="true"
         android:theme="@style/Theme.Appfoody2"
         tools:targetApi="31">
-
+        <activity
+            android:name=".View.Fragments.ChiTietQuanAn"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.Appfoody2.NoActionBar"
-            >
-
-        </activity>
-
+            android:theme="@style/Theme.Appfoody2.NoActionBar"></activity>
         <activity
             android:name=".Firstscreen"
             android:exported="true">
@@ -55,14 +53,10 @@
 
         <activity
             android:name=".RegisterActivity2"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

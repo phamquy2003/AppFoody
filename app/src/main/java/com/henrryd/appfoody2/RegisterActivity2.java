@@ -32,7 +32,7 @@ import java.util.Map;
 public class RegisterActivity2 extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnDangKy;
-    private EditText edEmailDK, edPasswordDK, edConfirmPassword;
+    private EditText edEmailDK, edPasswordDK, edConfirmPassword, edName;
     private FirebaseFirestore firestore;
     private ProgressDialog progressDialog;
     private DangKyController dangKyController;
@@ -58,6 +58,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
         edPasswordDK = findViewById(R.id.edPasswordDK);
         edConfirmPassword = findViewById(R.id.edConfirmPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
+        edName = findViewById(R.id.edName);
         dangKyController = new DangKyController();
 
         btnDangKy.setOnClickListener(this);
@@ -93,6 +94,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             progressDialog.dismiss();
         } else {
             Map<String, String> userMap = new HashMap<>();
+            userMap.put("name",edName.getText().toString());
             userMap.put("username", edEmailDK.getText().toString());
             userMap.put("pass", edPasswordDK.getText().toString());
             userMap.put("avatar", "ss_" + (int) (Math.random() * 10 - 1));

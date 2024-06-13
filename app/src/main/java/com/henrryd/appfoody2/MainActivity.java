@@ -2,6 +2,8 @@ package com.henrryd.appfoody2;
 
 
 
+import static com.henrryd.appfoody2.R.id.imageView_header;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,10 +13,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -26,12 +30,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.henrryd.appfoody2.Adapters.AdapterViewHome;
 import com.henrryd.appfoody2.BroadcastReceiverFoody.LowBatteryReceiver;
 import com.henrryd.appfoody2.BroadcastReceiverFoody.NetworkChangeReceiver;
+import com.henrryd.appfoody2.Entity.user1;
 import com.henrryd.appfoody2.databinding.ActivityMainBinding;
 import com.henrryd.appfoody2.other.DataLocalManager;
 import com.henrryd.appfoody2.other.MyApplication;
+import com.henrryd.appfoody2.other.user;
+import com.henrryd.appfoody2.other.custom_Picture;
+
+import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
 
@@ -39,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     RadioButton rbWhere;
     RadioButton rbFood;
     RadioGroup grwhere_food;
+    ImageView img_header;
+
+    TextView email_header, name_header;
     private NetworkChangeReceiver receiver;
     private LowBatteryReceiver lowBatteryReceiver;
 
@@ -56,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
+        Intent it = getIntent();
+        Bundle bundle = it.getExtras();
+
+        if (bundle != null) inituser(bundle);
 
         Toolbar toolbar = binding.appBarMain.toolbar;
         setSupportActionBar(toolbar);
@@ -80,6 +98,12 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPagerHome.addOnPageChangeListener(this);
         grwhere_food.setOnCheckedChangeListener(this);
 
+        View view = binding.navView.getHeaderView(0);
+        img_header = view.findViewById(imageView_header);
+        email_header = view.findViewById(R.id.email_header);
+        name_header = view.findViewById(R.id.name_header);
+
+        Loadinfouser();
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -104,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         // Đăng ký LowBatteryReceiver
         IntentFilter filterbattery = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         registerReceiver(lowBatteryReceiver, filterbattery);
+
+
+
 
     }
 
@@ -132,6 +159,26 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+    }
+
+
+    private void Loadinfouser() {
+        String tmpuser = DataLocalManager.get_user();
+        if (tmpuser != null) {
+            Gson gson = new Gson();
+            Type objtype = new TypeToken<user1>() {
+            }.getType();
+            user1 tmp = gson.fromJson(tmpuser, objtype);
+            img_header.setImageURI(custom_Picture.getUri(tmp.avatar));
+            name_header.setText(tmp.name);
+            email_header.setText(tmp.username);
+        }
+    }
+    private void inituser(Bundle bundle) {
+        user tmp = (user) bundle.getSerializable("dulieu");
+        //Gson để chuyển dữ liệu từ Object sang string
+        Gson gson = new Gson();
+        DataLocalManager.update_user(gson.toJson(tmp));
     }
 
     @Override

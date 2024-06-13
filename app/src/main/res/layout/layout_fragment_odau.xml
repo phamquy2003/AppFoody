@@ -110,6 +110,7 @@
                         app:cornerRadius="5dp" />
 
                     <Button
+                        android:id="@+id/btnBlog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="7dp"
