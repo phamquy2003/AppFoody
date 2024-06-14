@@ -72,26 +72,31 @@ public class AdapterBinhLuan extends RecyclerView.Adapter<AdapterBinhLuan.ViewHo
         }
 
 
-        for (String linkhinh : binhLuanModel.getHinhanhBinhLuanList()){
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("hinhanh").child("listhinh");
+        for (String linkhinh : binhLuanModel.getHinhanhBinhLuanList()) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh); // Sửa dòng này
             long ONE_MEGABYTE = 1024 * 1024;
             storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                     bitmapList.add(bitmap);
-                    if (bitmapList.size() == binhLuanModel.getHinhanhBinhLuanList().size()){
-                        AdapterRecyclerHinhBinhLuan adapterRecyclerHinhBinhLuan = new AdapterRecyclerHinhBinhLuan(context, R.layout.custom_layout_hinhbinhluan, bitmapList);
-                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context,2);
+                    Log.d("FirebaseStorage", "Image loaded successfully from URL: " + linkhinh);
+                    if (bitmapList.size() == binhLuanModel.getHinhanhBinhLuanList().size()) {
+                        AdapterRecyclerHinhBinhLuan adapterRecyclerHinhBinhLuan = new AdapterRecyclerHinhBinhLuan(context, R.layout.custom_layout_hinhbinhluan, bitmapList, binhLuanModel, false);
+                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 2);
                         holder.recyclerViewHinhBinhLuan.setLayoutManager(layoutManager);
                         holder.recyclerViewHinhBinhLuan.setAdapter(adapterRecyclerHinhBinhLuan);
                         adapterRecyclerHinhBinhLuan.notifyDataSetChanged();
                     }
-
-
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("FirebaseStorage", "Failed to load image from URL: " + linkhinh, exception);
                 }
             });
         }
+
 
     }
 

@@ -60,7 +60,6 @@ public class ChiTietQuanAn extends AppCompatActivity {
 
         // Get data from intent
         quanAnModel = getIntent().getParcelableExtra("quanan");
-
     }
 
     @Override
@@ -68,6 +67,7 @@ public class ChiTietQuanAn extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -80,14 +80,13 @@ public class ChiTietQuanAn extends AppCompatActivity {
         String closeTime = quanAnModel.getGiodongcua();
 
         try {
-
             Date nowDate = dateFormat.parse(nowTime);
             Date openDate = dateFormat.parse(openTime);
             Date closeDate = dateFormat.parse(closeTime);
 
-            if(nowDate.after(openDate) && nowDate.before(closeDate)){
+            if (nowDate.after(openDate) && nowDate.before(closeDate)) {
                 txtThoiGianHoatDong.setText(getString(R.string.dangmocua));
-            }else{
+            } else {
                 txtThoiGianHoatDong.setText(getString(R.string.dadongcua));
             }
         } catch (ParseException e) {
@@ -95,37 +94,41 @@ public class ChiTietQuanAn extends AppCompatActivity {
         }
 
         txtTieuDeToolbar.setText(quanAnModel.getTenquanan());
-
         txtTenQuanAn.setText(quanAnModel.getTenquanan());
-        txtDiaChiQuanAn.setText(quanAnModel.getChiNhanhQuanAnModelList().get(0).getDiachi());
+
+        // Check if the list is not empty before accessing the first element
+        if (quanAnModel.getChiNhanhQuanAnModelList() != null && !quanAnModel.getChiNhanhQuanAnModelList().isEmpty()) {
+            txtDiaChiQuanAn.setText(quanAnModel.getChiNhanhQuanAnModelList().get(0).getDiachi());
+        } else {
+            txtDiaChiQuanAn.setText(R.string.diachi_khongco); // Set a default or error text
+        }
+
         txtThoiGianHoatDong.setText(quanAnModel.getGiomocua() + " - " + quanAnModel.getGiodongcua());
         tongSoHinhAnh.setText(String.valueOf(quanAnModel.getHinhanhquanan().size()));
         tongSoBinhLuan.setText(String.valueOf(quanAnModel.getBinhLuanModelList().size()));
         txtThoiGianHoatDong.setText(openTime + " - " + closeTime);
 
-        StorageReference storageHinhQuanAn = FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhanhquanan().get(0));
-        long ONE_MEGABYTE = 1024 * 1024;
-        storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                imgHinhQuanAn.setImageBitmap(bitmap);
-            }
-        });
+        // Check if the list is not empty before accessing the first element
+        if (quanAnModel.getHinhanhquanan() != null && !quanAnModel.getHinhanhquanan().isEmpty()) {
+            StorageReference storageHinhQuanAn = FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhanhquanan().get(0));
+            long ONE_MEGABYTE = 1024 * 1024;
+            storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    imgHinhQuanAn.setImageBitmap(bitmap);
+                }
+            });
+        }
 
-        //Load danh sach binh luan cua quan
+        // Load danh sach binh luan cua quan
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         txtRecyclerChiTietQuanAn.setLayoutManager(layoutManager);
-        adapterBinhLuan = new AdapterBinhLuan(this,R.layout.custom_layout_binhluan,quanAnModel.getBinhLuanModelList());
+        adapterBinhLuan = new AdapterBinhLuan(this, R.layout.custom_layout_binhluan, quanAnModel.getBinhLuanModelList());
         txtRecyclerChiTietQuanAn.setAdapter(adapterBinhLuan);
         adapterBinhLuan.notifyDataSetChanged();
 
-        NestedScrollView nestedScrollViewChiTiet = (NestedScrollView) findViewById(R.id.nestedScollViewChiTiet);
-        nestedScrollViewChiTiet.smoothScrollTo(0,0);
+        NestedScrollView nestedScrollViewChiTiet = findViewById(R.id.nestedScollViewChiTiet);
+        nestedScrollViewChiTiet.smoothScrollTo(0, 0);
     }
-
-
-
-
-
 }

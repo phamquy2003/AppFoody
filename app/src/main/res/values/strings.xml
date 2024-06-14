@@ -42,5 +42,6 @@
     <string name="condition">By clicking continue, you agree to our Terms of Service and Privacy Policy</string>
     <string name="dangmocua">Đang mở cửa</string>
     <string name ="dadongcua">Đã đóng cửa</string>
+    <string name="diachi_khongco">Không có địa chỉ</string>
 
 </resources>
