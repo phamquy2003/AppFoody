@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -117,7 +118,7 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             holder.txtDiaChiQuanAn.setText("Chưa cập nhật địa chỉ");
             holder.txtKhoangCachQuanAn.setText("");
         }
-        holder.txtTenQuanAnOdau.setOnClickListener(new View.OnClickListener() {
+        holder.cardViewOdau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iChiTienQuanAn  = new Intent(context, ChiTietQuanAn.class);
@@ -156,6 +157,8 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
         CircleImageView circleImageUser, circleImageUser2;
         LinearLayout containerComment, containerComment2;
 
+        CardView cardViewOdau;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenQuanAnOdau = itemView.findViewById(R.id.txtTenQuanAnOdau);
@@ -176,6 +179,7 @@ public class AdapterRecyclerOdau extends RecyclerView.Adapter<AdapterRecyclerOda
             txtTotalImage = itemView.findViewById(R.id.txtTotalImage);
             txtTotalComment = itemView.findViewById(R.id.txtTotalComment);
             txtAvgPoint = itemView.findViewById(R.id.txtAvgPoint);
+            cardViewOdau = itemView.findViewById(R.id.cardViewOdau);
         }
     }
 }

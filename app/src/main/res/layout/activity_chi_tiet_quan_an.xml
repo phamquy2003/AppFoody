@@ -8,6 +8,7 @@
         layout="@layout/layout_toolbar"/>
 
     <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -16,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="?actionBarSize"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@mipmap/reviews"
-                    android:text="@string/review"
+                    android:text="@string/reviews"
                     android:textColor="@color/black"
                     android:backgroundTint="@color/white"
 
@@ -78,8 +78,9 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/imgHinhQuanAn"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:src="@mipmap/khucbach"
                 android:scaleType="fitXY"/>
 
@@ -124,6 +125,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tongSoHinhAnh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123"
@@ -146,6 +148,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tongSoCheckIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123"
@@ -168,6 +171,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tongSoBinhLuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123"
@@ -177,7 +181,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/review"
+                        android:text="@string/reviews"
                         />
 
 
@@ -190,6 +194,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tongSoLuuLai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123"
@@ -218,7 +223,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <TextView
-
+                    android:id="@+id/txtThoiGianHoatDong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="7:00 - 23:00"
@@ -229,10 +234,10 @@
                     />
 
                 <TextView
-
+                    android:id="@+id/txtStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dang mo cua"
+                    android:text="Đang mở cửa"
                     android:textSize="15sp"
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"

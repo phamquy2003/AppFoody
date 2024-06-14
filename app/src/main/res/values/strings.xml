@@ -30,7 +30,7 @@
     <string name="blog">Blog</string>
     <string name="delivery">Delivery</string>
     <string name="gamefun">Game</string>
-    <string name="review">Bình luận</string>
+    <string name="reviews">Bình luận</string>
     <string name="topmember">Top member</string>
     <string name="order">Order</string>
     <string name="photo">Ảnh</string>
@@ -40,5 +40,7 @@
     <string name="inputName">Input name...</string>
     <string name="inputPassword">Input password ...</string>
     <string name="condition">By clicking continue, you agree to our Terms of Service and Privacy Policy</string>
+    <string name="dangmocua">Đang mở cửa</string>
+    <string name ="dadongcua">Đã đóng cửa</string>
 
 </resources>

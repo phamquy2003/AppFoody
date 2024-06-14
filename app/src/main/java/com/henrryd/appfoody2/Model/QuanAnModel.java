@@ -40,6 +40,11 @@ public class QuanAnModel implements Parcelable {
         } else {
             luotthich = in.readLong();
         }
+        chiNhanhQuanAnModelList = new ArrayList<ChiNhanhQuanAnModel>();
+        in.readTypedList(chiNhanhQuanAnModelList,ChiNhanhQuanAnModel.CREATOR);
+        binhLuanModelList = new ArrayList<BinhLuanModel>();
+        in.readTypedList(binhLuanModelList, BinhLuanModel.CREATOR);
+
     }
 
     public static final Creator<QuanAnModel> CREATOR = new Creator<QuanAnModel>() {
@@ -304,5 +309,7 @@ public class QuanAnModel implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeLong(luotthich);
         }
+        dest.writeTypedList(chiNhanhQuanAnModelList);
+        dest.writeTypedList(binhLuanModelList);
     }
 }
