@@ -9,10 +9,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar; // Import androidx.appcompat.widget.Toolbar
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.henrryd.appfoody2.Adapters.AdapterBinhLuan;
 import com.henrryd.appfoody2.Model.QuanAnModel;
 import com.henrryd.appfoody2.R;
 
@@ -27,6 +31,8 @@ public class ChiTietQuanAn extends AppCompatActivity {
     ImageView imgHinhQuanAn;
     QuanAnModel quanAnModel;
     Toolbar toolbar;
+    RecyclerView txtRecyclerChiTietQuanAn;
+    AdapterBinhLuan adapterBinhLuan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class ChiTietQuanAn extends AppCompatActivity {
         imgHinhQuanAn = findViewById(R.id.imgHinhQuanAn);
         txtTieuDeToolbar = findViewById(R.id.txtTieuDeToolbar);
         toolbar = findViewById(R.id.toolbar); // Correct import to androidx.appcompat.widget.Toolbar
+        txtRecyclerChiTietQuanAn = findViewById(R.id.txtRecyclerChiTietQuanAn);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -106,7 +113,18 @@ public class ChiTietQuanAn extends AppCompatActivity {
             }
         });
 
+        //Load danh sach binh luan cua quan
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        txtRecyclerChiTietQuanAn.setLayoutManager(layoutManager);
+        adapterBinhLuan = new AdapterBinhLuan(this,R.layout.custom_layout_binhluan,quanAnModel.getBinhLuanModelList());
+        txtRecyclerChiTietQuanAn.setAdapter(adapterBinhLuan);
+        adapterBinhLuan.notifyDataSetChanged();
+
+        NestedScrollView nestedScrollViewChiTiet = (NestedScrollView) findViewById(R.id.nestedScollViewChiTiet);
+        nestedScrollViewChiTiet.smoothScrollTo(0,0);
     }
+
+
 
 
 

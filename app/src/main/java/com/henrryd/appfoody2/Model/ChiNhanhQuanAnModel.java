@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ChiNhanhQuanAnModel implements Parcelable {
     String diachi;
     Double latitude, longitude, khoangcach;
-
-    // Constructor không tham số
     public ChiNhanhQuanAnModel() {
     }
 
