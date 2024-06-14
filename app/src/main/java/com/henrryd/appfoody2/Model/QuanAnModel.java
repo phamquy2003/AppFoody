@@ -1,5 +1,6 @@
 package com.henrryd.appfoody2.Model;
 
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -24,6 +25,24 @@ public class QuanAnModel implements Parcelable {
     List<String> hinhanhquanan;
     List<BinhLuanModel> binhLuanModelList;
     Long luotthich;
+
+    public List<Bitmap> getBitmapList() {
+        return bitmapList;
+    }
+
+    public void setBitmapList(List<Bitmap> bitmapList) {
+        this.bitmapList = bitmapList;
+    }
+
+    public DatabaseReference getNodeRoot() {
+        return nodeRoot;
+    }
+
+    public void setNodeRoot(DatabaseReference nodeRoot) {
+        this.nodeRoot = nodeRoot;
+    }
+
+    List<Bitmap> bitmapList;
     DatabaseReference nodeRoot;
 
     protected QuanAnModel(Parcel in) {

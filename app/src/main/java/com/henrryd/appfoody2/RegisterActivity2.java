@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -24,13 +25,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.henrryd.appfoody2.Controller.DangKyController;
 import com.henrryd.appfoody2.Model.ThanhVienModel;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity2 extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "RegisterActivity2";
     private Button btnDangKy;
     private EditText edEmailDK, edPasswordDK, edConfirmPassword, edName;
     private FirebaseFirestore firestore;
@@ -94,7 +94,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             progressDialog.dismiss();
         } else {
             Map<String, String> userMap = new HashMap<>();
-            userMap.put("name",edName.getText().toString());
+            userMap.put("name", edName.getText().toString());
             userMap.put("username", edEmailDK.getText().toString());
             userMap.put("pass", edPasswordDK.getText().toString());
             userMap.put("avatar", "ss_" + (int) (Math.random() * 10 - 1));
@@ -102,6 +102,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             firestore.collection("user").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
+                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     String documentId = documentReference.getId();
 
                     ThanhVienModel thanhVienModel = new ThanhVienModel();
@@ -120,6 +121,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    Log.w(TAG, "Error adding document", e);
                     Toast.makeText(RegisterActivity2.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
