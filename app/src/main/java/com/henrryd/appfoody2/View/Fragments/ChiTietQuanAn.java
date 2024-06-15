@@ -7,12 +7,21 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar; // Import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -25,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ChiTietQuanAn extends AppCompatActivity {
+public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView txtTieuDeToolbar, txtTenQuanAn, txtDiaChiQuanAn, txtThoiGianHoatDong, txtStatus, tongSoHinhAnh, tongSoBinhLuan, tongSoCheckIn, tongSoLuuLai;
     ImageView imgHinhQuanAn;
@@ -33,6 +42,8 @@ public class ChiTietQuanAn extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView txtRecyclerChiTietQuanAn;
     AdapterBinhLuan adapterBinhLuan;
+    GoogleMap googleMap;
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +63,10 @@ public class ChiTietQuanAn extends AppCompatActivity {
         txtTieuDeToolbar = findViewById(R.id.txtTieuDeToolbar);
         toolbar = findViewById(R.id.toolbar); // Correct import to androidx.appcompat.widget.Toolbar
         txtRecyclerChiTietQuanAn = findViewById(R.id.txtRecyclerChiTietQuanAn);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -130,5 +145,28 @@ public class ChiTietQuanAn extends AppCompatActivity {
 
         NestedScrollView nestedScrollViewChiTiet = findViewById(R.id.nestedScollViewChiTiet);
         nestedScrollViewChiTiet.smoothScrollTo(0, 0);
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        this.googleMap = googleMap;
+        this.googleMap = googleMap;
+
+        double latitude = quanAnModel.getChiNhanhQuanAnModelList().get(0).getLatitude();
+        double longitude = quanAnModel.getChiNhanhQuanAnModelList().get(0).getLongitude();
+
+        LatLng latLng = new LatLng(latitude,longitude);
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(quanAnModel.getTenquanan());
+
+        googleMap.addMarker(markerOptions);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,14);
+        googleMap.moveCamera(cameraUpdate);
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 }

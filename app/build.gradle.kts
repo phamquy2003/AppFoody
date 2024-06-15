@@ -66,4 +66,6 @@ dependencies {
     // Core library
     implementation("androidx.core:core:1.10.1")  // Thêm dependency androidx.core mới nhất
     implementation ("com.google.android.gms:play-services-location:18.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.0.0")
+
 }
