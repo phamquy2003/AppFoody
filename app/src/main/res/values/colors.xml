@@ -15,4 +15,13 @@
     <color name="SkyBlue">#87CEEB</color>
     <color name="PowderBlue">#B0E0E6</color>
     <color name="maincolor">#62943B</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#cd2027</color>
+    <color name="colorAccent">#CCC</color>
+    <color name="transparentBackgroundDangnhap">#33000000</color>
+    <color name="colorFacebook">#189aca</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBackgroungTrangChu">#CCC</color>
+    <color name="tranparentWhite">#CCFFFFFF</color>
+    <color name="colorWhite">#FFF</color>
 </resources>

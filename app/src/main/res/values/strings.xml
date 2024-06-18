@@ -43,5 +43,6 @@
     <string name="dangmocua">Đang mở cửa</string>
     <string name ="dadongcua">Đã đóng cửa</string>
     <string name="diachi_khongco">Không có địa chỉ</string>
+    <string name="post" >Post</string>
 
 </resources>

@@ -31,12 +31,12 @@ public class AdapterBinhLuan extends RecyclerView.Adapter<AdapterBinhLuan.ViewHo
     Context context;
     int Layout;
     List<BinhLuanModel> binhLuanModelList;
-    List<Bitmap> bitmapList;
+
     public AdapterBinhLuan(Context context, int Layout, List<BinhLuanModel> binhLuanModelList){
 
         this.context = context;
         this.Layout = Layout;
-        bitmapList = new ArrayList<>();
+
         this.binhLuanModelList = binhLuanModelList;
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,16 +64,16 @@ public class AdapterBinhLuan extends RecyclerView.Adapter<AdapterBinhLuan.ViewHo
     @Override
     public void onBindViewHolder(final AdapterBinhLuan.ViewHolder holder, int position) {
         final BinhLuanModel binhLuanModel = binhLuanModelList.get(position);
-        holder.txtTieudebinhluan.setText(binhLuanModel.getTieude());
+        holder.txtTieudebinhluan.setText(binhLuanModel. getTieude());
         holder.txtNodungbinhluan.setText(binhLuanModel.getNoidung());
         holder.txtChamDiemBinhLuan.setText(binhLuanModel.getChamdiem() + "");
         if (binhLuanModel.getThanhVienModel() != null) {
             loadFirebaseImage(holder.cicleImageUser, "thanhvien/" + binhLuanModel.getThanhVienModel().getHinhanh());
         }
-
+        final List<Bitmap>  bitmapList = new ArrayList<>();
 
         for (String linkhinh : binhLuanModel.getHinhanhBinhLuanList()) {
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh); // Sửa dòng này
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("hinhanh/").child(linkhinh); // Sửa dòng này
             long ONE_MEGABYTE = 1024 * 1024;
             storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override

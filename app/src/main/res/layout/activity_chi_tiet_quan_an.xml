@@ -41,11 +41,12 @@
                 />
 
             <Button
+                android:id="@+id/btnComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:drawableTop="@mipmap/reviews"
+                android:drawableTop="@mipmap/comment"
                 android:text="@string/reviews"
                 android:textColor="@color/black"
 
@@ -223,6 +224,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -234,6 +236,7 @@
                         android:drawablePadding="5dp"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
+                        android:textStyle="bold"
                         android:text="7:00 - 23:00"
                         android:textSize="15sp" />
 
@@ -248,10 +251,8 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-                <include
-                    layout="@layout/layout_tinhnang_chitietquanan"
-                    />
-
+                <include layout="@layout/layout_tinhnang_chitietquanan"/>
+                <include layout="@layout/layout_thucdon_chitiet" />
                 <include layout="@layout/layout_binhluan_chitietquanan" />
             </LinearLayout>
 

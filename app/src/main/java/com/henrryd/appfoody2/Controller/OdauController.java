@@ -38,7 +38,6 @@ public class  OdauController {
             public void getDanhSachQuanAnModel(QuanAnModel quanAnModel) {
                 quanAnModelList.add(quanAnModel);
                 adapterRecyclerOdau.notifyDataSetChanged(); // Notify the adapter that data has changed
-
                 progressBar.setVisibility(View.GONE);
             }
         };

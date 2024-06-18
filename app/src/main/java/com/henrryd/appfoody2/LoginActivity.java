@@ -2,6 +2,7 @@ package com.henrryd.appfoody2;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.facebook.FacebookSdk;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 import com.henrryd.appfoody2.Dialog.forgotPasswordDialog;
 import com.henrryd.appfoody2.other.MyApplication;
 import com.henrryd.appfoody2.other.user;
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnDangNhap;
     TextView txtDangKy, txtQuenMatKhau;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SharedPreferences sharedPreferences;
 
 
     @SuppressLint("MissingInflatedId")
@@ -50,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhap = findViewById(R.id.btnDangKy);
         txtDangKy = findViewById(R.id.txtDangKy);
         txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
+
+        sharedPreferences = getSharedPreferences("luudangnhap", MODE_PRIVATE);
 
         Intent it = getIntent();
         Bundle bundle = it.getExtras();
@@ -96,14 +101,21 @@ public class LoginActivity extends AppCompatActivity {
                 .whereEqualTo("pass", pass)
                 .get().addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null && task.getResult().size() == 1) {
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                        String documentID = document.getId();
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("mauser", documentID);
+                        editor.apply();
+
                         Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+
                         Intent it = new Intent(LoginActivity.this, MainActivity.class);
-                        DocumentSnapshot tmp = task.getResult().getDocuments().get(0);
                         user tmpuser = new user(
-                                tmp.getString("name"),
-                                tmp.getString("username"),
-                                tmp.getString("pass"),
-                                tmp.getString("avatar"));
+                                document.getString("name"),
+                                document.getString("username"),
+                                document.getString("pass"),
+                                document.getString("avatar"));
                         it.putExtra("dulieu", (Serializable) tmpuser);
                         MyApplication.User = tmpuser;
                         startActivity(it);
@@ -113,4 +125,5 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

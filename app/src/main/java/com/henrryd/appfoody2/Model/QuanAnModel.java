@@ -24,8 +24,19 @@ public class QuanAnModel implements Parcelable {
     List<String> tienich;
     List<String> hinhanhquanan;
     List<BinhLuanModel> binhLuanModelList;
+
+
+
+    List<ThucDonModel> thucDons;
     Long luotthich;
 
+    public List<ThucDonModel> getThucDons() {
+        return thucDons;
+    }
+
+    public void setThucDons(List<ThucDonModel> thucDons) {
+        this.thucDons = thucDons;
+    }
     public List<Bitmap> getBitmapList() {
         return bitmapList;
     }
@@ -215,11 +226,11 @@ public class QuanAnModel implements Parcelable {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshotThanhVien) {
                                                         ThanhVienModel thanhVienModel = snapshotThanhVien.getValue(ThanhVienModel.class);
-                                                        binhLuanModel.setMabinhluan(valueBinhluan.getKey());
+                                                        binhLuanModel.setManbinhluan(valueBinhluan.getKey());
                                                         binhLuanModel.setThanhVienModel(thanhVienModel);
 
                                                         List<String> hinhanhBinhLuanList = new ArrayList<>();
-                                                        DatabaseReference hinhanhBinhLuanRef = database.getReference("hinhanhbinhluans").child(binhLuanModel.getMabinhluan());
+                                                        DatabaseReference hinhanhBinhLuanRef = database.getReference("hinhanhbinhluans").child(binhLuanModel.getManbinhluan());
                                                         hinhanhBinhLuanRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot snapshotNodeHinhAnhBl) {

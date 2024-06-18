@@ -1,9 +1,12 @@
 package com.henrryd.appfoody2.View.Fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +29,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.henrryd.appfoody2.Adapters.AdapterBinhLuan;
+import com.henrryd.appfoody2.Controller.ThucDonController;
 import com.henrryd.appfoody2.Model.QuanAnModel;
 import com.henrryd.appfoody2.R;
 
@@ -34,16 +38,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallback {
+public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener {
 
     TextView txtTieuDeToolbar, txtTenQuanAn, txtDiaChiQuanAn, txtThoiGianHoatDong, txtStatus, tongSoHinhAnh, tongSoBinhLuan, tongSoCheckIn, tongSoLuuLai;
     ImageView imgHinhQuanAn;
+    Button btnComment;
     QuanAnModel quanAnModel;
     Toolbar toolbar;
     RecyclerView txtRecyclerChiTietQuanAn;
     AdapterBinhLuan adapterBinhLuan;
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
+    ThucDonController thucDonController;
+    RecyclerView recyclerThucDon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,7 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
         txtDiaChiQuanAn = findViewById(R.id.txtDiaChiQuanAn);
         txtThoiGianHoatDong = findViewById(R.id.txtThoiGianHoatDong);
         txtStatus = findViewById(R.id.txtStatus);
+        btnComment = findViewById(R.id.btnComment);
         tongSoHinhAnh = findViewById(R.id.tongSoHinhAnh);
         tongSoBinhLuan = findViewById(R.id.tongSoBinhLuan);
         tongSoCheckIn = findViewById(R.id.tongSoCheckIn);
@@ -67,11 +75,15 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+        recyclerThucDon = findViewById(R.id.recyclerThucDon);
+        btnComment.setOnClickListener(this);
 
-        toolbar.setTitle("");
+                toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        thucDonController = new ThucDonController();
 
         // Get data from intent
         quanAnModel = getIntent().getParcelableExtra("quanan");
@@ -98,7 +110,7 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
             Date nowDate = dateFormat.parse(nowTime);
             Date openDate = dateFormat.parse(openTime);
             Date closeDate = dateFormat.parse(closeTime);
-
+            Log.d("opendate", openDate + "");
             if (nowDate.after(openDate) && nowDate.before(closeDate)) {
                 txtThoiGianHoatDong.setText(getString(R.string.dangmocua));
             } else {
@@ -145,6 +157,8 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
 
         NestedScrollView nestedScrollViewChiTiet = findViewById(R.id.nestedScollViewChiTiet);
         nestedScrollViewChiTiet.smoothScrollTo(0, 0);
+
+        thucDonController.getDanhSachThucDonQuanAnTheoMa(this,quanAnModel.getMaquanan(), recyclerThucDon);
     }
 
     @Override
@@ -168,5 +182,18 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.btnComment) {
+            Intent iBinhLuan = new Intent(this, BinhLuanActivity.class);
+            iBinhLuan.putExtra("maquanan", quanAnModel.getMaquanan());
+            iBinhLuan.putExtra("tenquan", quanAnModel.getTenquanan());
+            iBinhLuan.putExtra("diachi", quanAnModel.getChiNhanhQuanAnModelList().get(0).getDiachi());
+            startActivity(iBinhLuan);
+        }
+
     }
 }
