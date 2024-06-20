@@ -38,11 +38,8 @@
             android:theme="@style/Theme.Appfoody2.NoActionBar" />
         <activity
             android:name=".Firstscreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <meta-data
@@ -67,6 +64,13 @@
         <activity
             android:name=".View.Fragments.ChonHinhBinhLuanActivity"
             android:exported="false" />
+        <activity android:name=".View.Fragments.ThemQuanAnActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

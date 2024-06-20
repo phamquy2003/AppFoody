@@ -44,5 +44,17 @@
     <string name ="dadongcua">Đã đóng cửa</string>
     <string name="diachi_khongco">Không có địa chỉ</string>
     <string name="post" >Post</string>
-
+    <string name="thucdon">Thực đơn</string>
+    <string name="tenquanan">Tên quán ăn</string>
+    <string name="giatoida">Giá tối đa</string>
+    <string name="giatoithieu">Giá tối thiểu</string>
+    <string name="khonggiaohang">Không giao hàng</string>
+    <string name="giomocua">Giờ mở cửa</string>
+    <string name="giodongcua">Giờ đóng cửa</string>
+    <string name="chinhanh">Chi nhánh</string>
+    <string name="tenmon">Tên món</string>
+    <string name="giatien">Giá tiền</string>
+    <string name="luuquanan">Lưu quán ăn</string>
+    <string name="themthucdon">Thêm thực đơn</string>
+    <string name="giaohang">Giao hàng</string>
 </resources>

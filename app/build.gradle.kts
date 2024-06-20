@@ -64,8 +64,10 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Core library
-    implementation("androidx.core:core:1.10.1")  // Thêm dependency androidx.core mới nhất
+    implementation("androidx.core:core:1.8.1")
     implementation ("com.google.android.gms:play-services-location:18.0.0")
     implementation ("com.google.android.gms:play-services-maps:18.0.0")
+    implementation ("com.google.maps:google-maps-services:0.15.0")
+
 
 }

@@ -77,8 +77,7 @@ public class ChiTietQuanAn extends AppCompatActivity implements OnMapReadyCallba
         }
         recyclerThucDon = findViewById(R.id.recyclerThucDon);
         btnComment.setOnClickListener(this);
-
-                toolbar.setTitle("");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
