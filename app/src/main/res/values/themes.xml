@@ -15,4 +15,18 @@
     <style name="Theme.Appfoody2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Appfoody2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Customize your dialog theme if needed -->
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButton.PositiveButton</item> <!-- Customize positive button style -->
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButton.NegativeButton</item> <!-- Customize negative button style -->
+    </style>
+    <style name="DialogButton.PositiveButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <!-- Customize positive button style -->
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DialogButton.NegativeButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <!-- Customize negative button style -->
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

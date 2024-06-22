@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +8,7 @@
         android:id="@+id/nav_home"
         android:name="com.henrryd.appfoody2.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/layout_fragment_odau" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +21,16 @@
         android:name="com.henrryd.appfoody2.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_lienhe"
+        android:name="com.henrryd.appfoody2.ui.Lienhe.Lienhe"
+        android:label="Liên hệ với chúng tôi"
+        tools:layout="@layout/fragment_lienhe" />
+
+    <fragment
+        android:id="@+id/nav_thongtinntaikhoan"
+        android:name="com.henrryd.appfoody2.ui.Thongtintaikhoan.Thongtintaikhoan"
+        android:label="Thông tin tài khoản"
+        tools:layout="@layout/fragment_thongtintaikhoan"/>
 </navigation>
