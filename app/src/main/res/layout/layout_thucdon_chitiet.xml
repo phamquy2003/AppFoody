@@ -22,4 +22,13 @@
         >
 
     </androidx.recyclerview.widget.RecyclerView>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Đặt món"
+        android:textSize="16dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:drawableRight="@drawable/baseline_add_circle_24"
+        android:layout_gravity="right"
+        />
 </LinearLayout>
