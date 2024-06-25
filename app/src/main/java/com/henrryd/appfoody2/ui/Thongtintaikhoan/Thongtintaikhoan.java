@@ -17,6 +17,7 @@ import com.henrryd.appfoody2.Controller.Interfaces.DialogListener;
 import com.henrryd.appfoody2.Dialog.AlertDialogg;
 import com.henrryd.appfoody2.Dialog.ChangePasswordDialog_second;
 import com.henrryd.appfoody2.Dialog.forgotPasswordDialog;
+import com.henrryd.appfoody2.LoginActivity;
 import com.henrryd.appfoody2.R;
 import com.henrryd.appfoody2.RegisterActivity2;
 import com.henrryd.appfoody2.other.DataLocalManager;
@@ -100,12 +101,12 @@ public class Thongtintaikhoan extends Fragment {
         name.setText(MyApplication.User.name);
         username.setText(MyApplication.User.username);
         password.setText(MyApplication.User.Pass);
-        imgavt.setImageAlpha(R.mipmap.image_avt);
+        imgavt.setImageResource(R.mipmap.image_avt);
     }
 
     private void signout() {
         DataLocalManager.remove_user();
-        Intent it = new Intent(getContext(), RegisterActivity2.class);
+        Intent it = new Intent(getContext(), LoginActivity.class);
         MyApplication.User = null;
         startActivity(it);
     }

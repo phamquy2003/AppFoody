@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             Gson gson = new Gson();
             Type objType = new TypeToken<user1>() {}.getType();
             user1 tmp = gson.fromJson(tmpUser, objType);
-            img_header.setImageAlpha(R.mipmap.image_avt);
+            img_header.setImageResource(R.mipmap.image_avt);
             name_header.setText(tmp.name);
             email_header.setText(tmp.username);
         }
