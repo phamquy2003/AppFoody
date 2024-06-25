@@ -158,7 +158,7 @@
                             android:id="@+id/tongSoCheckIn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="123"
+                            android:text="80"
                             android:textStyle="bold" />
 
                         <TextView
@@ -202,7 +202,7 @@
                             android:id="@+id/tongSoLuuLai"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="123"
+                            android:text="23"
                             android:textStyle="bold" />
 
                         <TextView

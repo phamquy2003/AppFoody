@@ -2,8 +2,8 @@
     <string name="app_name">Foody</string>
     <string name="phienban">Version</string>
     <string name="dangtai">Loading..</string>
-    <string name="dangnhap">LOGIN IN</string>
-    <string name="hoac">or continue with</string>
+    <string name="dangnhap">Log In</string>
+    <string name="hoac"> hoặc </string>
     <string name="dngoogle">Connect with Google</string>
     <string name="dnfacebook">Connect with Facebook</string>
     <string name="app_id">368421622317134</string>
@@ -34,7 +34,7 @@
     <string name="topmember">Top member</string>
     <string name="order">Order</string>
     <string name="photo">Ảnh</string>
-    <string name="save">Lưu lại</string>
+    <string name="save">Yêu thích</string>
     <string name="share">Chia sẻ</string>
     <string name="checkin">Check-ins</string>
     <string name="inputName">Input name...</string>

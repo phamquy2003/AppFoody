@@ -42,6 +42,15 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
         return new HolderMonAn(view);
     }
 
+    public String prepareOrderSummary() {
+        StringBuilder summary = new StringBuilder();
+        for (DatMon datMon : datMonList) {
+            summary.append("Tên món: ").append(datMon.getTenMonAn())
+                    .append(", Số lượng: ").append(datMon.getSoLuong())
+                    .append("\n");
+        }
+        return summary.toString();
+    }
     @Override
     public void onBindViewHolder(@NonNull final HolderMonAn holder, int position) {
         final MonAnModel monAnModel = monAnModelList.get(position);
@@ -78,6 +87,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 AdapterMonAn.datMonList.add(datMon);
 
+                Log.d("AdapterMonAn", "Danh sách món đã đặt:\n" + prepareOrderSummary());
             }
         });
 
@@ -95,6 +105,8 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
+
+                Log.d("AdapterMonAn", "Danh sách món đã đặt:\n" + prepareOrderSummary());
 
             }
         });

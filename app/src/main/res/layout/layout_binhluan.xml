@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="Viết bình luận"
             android:textColor="@color/colorAccent"
-            android:textSize="15sp"
+            android:textSize="20sp"
             />
 
         <TextView
@@ -66,9 +66,11 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:paddingLeft="10dp"
+        android:layout_margin="5dp"
         android:hint="Tiêu đề ( không bắt buộc )"
         android:textSize="16sp"
-        android:background="#FFF"
+        android:background="@drawable/edittext_border"
+
         />
     <EditText
         android:id="@+id/edChamDiem"
@@ -78,8 +80,9 @@
         android:paddingLeft="10dp"
         android:hint="Cho điểm quán ăn"
         android:textSize="16sp"
-        android:background="#FFF"
-        />
+        android:background="@drawable/edittext_border"
+        android:layout_margin="5dp" />
+
 </LinearLayout>
 
 
@@ -96,6 +99,9 @@
         android:hint="Viết trên 100 từ, đúng chính tả, ngôn từ văn hóa, không spam ... để được điểm thưởng"
         android:textSize="14sp"
         android:gravity="top"
+        android:padding="5dp"
+        android:background="@drawable/edittext_border"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         />
 
@@ -103,6 +109,9 @@
         android:id="@+id/recyclerChonHinhBinhLuan"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:padding="5dp"
+        android:background="@drawable/edittext_border"
+        android:layout_margin="5dp"
         >
 
         </androidx.recyclerview.widget.RecyclerView>
