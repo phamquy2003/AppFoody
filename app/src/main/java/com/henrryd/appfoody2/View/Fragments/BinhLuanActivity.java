@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.henrryd.appfoody2.Adapters.AdapterHienThiHinhBinhLuanDuocChon;
 import com.henrryd.appfoody2.Controller.BinhLuanController;
+import com.henrryd.appfoody2.MainActivity;
 import com.henrryd.appfoody2.Model.BinhLuanModel;
 import com.henrryd.appfoody2.R;
 
@@ -125,6 +126,10 @@ public class BinhLuanActivity extends AppCompatActivity implements View.OnClickL
 
         clearInputFields();
         Toast.makeText(this, "Comment submitted successfully!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void clearInputFields() {

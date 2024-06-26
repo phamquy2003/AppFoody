@@ -24,6 +24,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.henrryd.appfoody2.BroadcastReceiverFoody.LowBatteryReceiver;
 import com.henrryd.appfoody2.BroadcastReceiverFoody.NetworkChangeReceiver;
+import com.henrryd.appfoody2.Controller.Interfaces.DialogListener;
+import com.henrryd.appfoody2.Dialog.AlertDialogg;
 import com.henrryd.appfoody2.Entity.user1;
 import com.henrryd.appfoody2.databinding.ActivityMainBinding;
 import com.henrryd.appfoody2.other.DataLocalManager;
@@ -97,13 +99,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logOut() {
-        Log.d("MainActivity", "Logging out");
-        DataLocalManager.remove_user();
-        Intent it = new Intent(MainActivity.this, LoginActivity.class);
-        MyApplication.User = null;
-        startActivity(it);
-        finish();
+        // Hiển thị dialog hỏi người dùng có muốn đăng xuất không
+        AlertDialogg alertDialogg = new AlertDialogg(MainActivity.this,
+                "Thông báo",
+                "Bạn có chắc chắn muốn đăng xuất?",
+                R.drawable.ic_logo_f2);
+        alertDialogg.setDialogListener(new DialogListener() {
+            @Override
+            public void dialogPositive() {
+                // Xử lý khi người dùng chọn đồng ý đăng xuất
+                Log.d("MainActivity", "Logging out");
+                DataLocalManager.remove_user();
+                Intent it = new Intent(MainActivity.this, LoginActivity.class);
+                MyApplication.User = null;
+                startActivity(it);
+                finish();
+            }
+        });
+        alertDialogg.show();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

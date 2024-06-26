@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Đặt món"
         android:textSize="16dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/maincolor"
         android:drawableRight="@drawable/baseline_add_circle_24"
         android:layout_gravity="right"
         />

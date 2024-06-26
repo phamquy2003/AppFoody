@@ -107,7 +107,7 @@ public class RegisterActivity2 extends AppCompatActivity implements View.OnClick
 
                     ThanhVienModel thanhVienModel = new ThanhVienModel();
                     thanhVienModel.setHoten(email);
-                    thanhVienModel.setHinhanh("user.png");
+                    thanhVienModel.setHinhanh("avt_shin1.jpg");
 
                     dangKyController.ThemThongTinThanhVienController(thanhVienModel, documentId);
 

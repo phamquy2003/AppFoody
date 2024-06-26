@@ -99,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/maincolor"
             android:text="Đổi mật khẩu"
             android:textSize="15dp" />
 
@@ -108,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_gray_corner20_button"
+            android:backgroundTint="@color/maincolor"
             android:text="Quên mật khẩu"
             android:textSize="15dp" />
 
@@ -118,9 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_gray_corner20_button_red"
-
-            android:backgroundTint="@null"
+            android:backgroundTint="@color/maincolor"
             android:text="Đăng xuất"
             android:textSize="15dp" />
 

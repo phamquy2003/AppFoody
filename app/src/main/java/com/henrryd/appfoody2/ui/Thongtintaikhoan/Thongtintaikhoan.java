@@ -85,7 +85,7 @@ public class Thongtintaikhoan extends Fragment {
                 AlertDialogg alertDialogg = new AlertDialogg(getContext()
                         , "Thông báo"
                         , "Bạn có chắc chắn muốn đăng xuất?"
-                        , R.drawable.thantai);
+                        , R.drawable.ic_logo_f2);
                 alertDialogg.setDialogListener(new DialogListener() {
                     @Override
                     public void dialogPositive() {

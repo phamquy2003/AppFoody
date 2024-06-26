@@ -101,7 +101,7 @@ public class forgotPasswordDialog {
                                 {
                                     String tmpOTP = generateOTP();
                                     forgotPasswordDialog dialogOTP = new forgotPasswordDialog(context,tmpOTP, ed_email_otp.getText().toString(), TYPE_OTP);
-                                    MAILSender mailSender = new MAILSender(ed_email_otp.getText().toString(),"OTP to change password", "Your OTP is " + tmpOTP);
+                                    MAILSender mailSender = new MAILSender(ed_email_otp.getText().toString(),"[Ứng dụng Foody] Mã xác thực OTP", "Xin chào, Bạn vừa cập nhật lại mật khẩu trên ứng dụng Foody, đây là mã OTP xác thực của bạn " + tmpOTP + ". Lưu ý: TUYỆT ĐỐI không cung cấp OTP cho bất cứ ai về bất cứ lý do gì!");
                                     mailSender.start();
                                     Toast.makeText(context, "Vui lòng kiểm tra email.", Toast.LENGTH_SHORT).show();
                                     dialogOTP.show();

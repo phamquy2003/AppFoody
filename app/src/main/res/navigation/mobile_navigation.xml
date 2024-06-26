@@ -13,8 +13,8 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.henrryd.appfoody2.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:label="Thêm quán ăn"
+        tools:layout="@layout/fragment_gallery"/>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -33,4 +33,11 @@
         android:name="com.henrryd.appfoody2.ui.Thongtintaikhoan.Thongtintaikhoan"
         android:label="Thông tin tài khoản"
         tools:layout="@layout/fragment_thongtintaikhoan"/>
+
+    <fragment
+        android:id="@+id/nav_vechungtoi"
+        android:name="com.henrryd.appfoody2.ui.Vechungtoi.Vechungtoi"
+        android:label=" Về chúng tôi"
+        tools:layout="@layout/fragment_vechungtoi"/>
+
 </navigation>

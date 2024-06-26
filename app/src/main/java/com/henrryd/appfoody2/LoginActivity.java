@@ -19,7 +19,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.facebook.FacebookSdk;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 import com.henrryd.appfoody2.Dialog.forgotPasswordDialog;
 import com.henrryd.appfoody2.other.MyApplication;
 import com.henrryd.appfoody2.other.user;
@@ -96,34 +95,58 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String username, String pass) {
+        // Tìm kiếm trong collection "user"
         db.collection("user")
                 .whereEqualTo("username", username)
                 .whereEqualTo("pass", pass)
                 .get().addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null && task.getResult().size() == 1) {
-                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
-                        String documentID = document.getId();
-
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("mauser", documentID);
-                        editor.apply();
-
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-
-                        Intent it = new Intent(LoginActivity.this, MainActivity.class);
-                        user tmpuser = new user(
-                                document.getString("name"),
-                                document.getString("username"),
-                                document.getString("pass"),
-                                document.getString("avatar"));
-                        it.putExtra("dulieu", (Serializable) tmpuser);
-                        MyApplication.User = tmpuser;
-                        startActivity(it);
-                        finish();
+                        handleLoginSuccess(task.getResult().getDocuments().get(0));
                     } else {
-                        Toast.makeText(LoginActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+                        // Nếu không tìm thấy trong "user", tiếp tục tìm trong "admin"
+                        db.collection("admin")
+                                .whereEqualTo("username", username)
+                                .whereEqualTo("password", pass)
+                                .get().addOnCompleteListener(adminTask -> {
+                                    if (adminTask.isSuccessful() && adminTask.getResult() != null && adminTask.getResult().size() == 1) {
+                                        handleLoginSuccess(adminTask.getResult().getDocuments().get(0));
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
                 });
     }
+
+    private void handleLoginSuccess(DocumentSnapshot document) {
+        String documentID = document.getId();
+        String role = document.getString("role");
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("mauser", documentID);
+        editor.apply();
+
+        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+
+        user tmpuser = new user(
+                document.getString("name"),
+                document.getString("username"),
+                document.getString("pass"),
+                document.getString("avatar"),
+                role); // Thêm role vào khởi tạo user
+        MyApplication.User = tmpuser;
+
+        if ("admin".equals(role)) {
+            Intent it = new Intent(LoginActivity.this, ThemQuanAnActivity.class);
+            it.putExtra("dulieu", (Serializable) tmpuser);
+            startActivity(it);
+        } else {
+            Intent it = new Intent(LoginActivity.this, MainActivity.class);
+            it.putExtra("dulieu", (Serializable) tmpuser);
+            startActivity(it);
+        }
+        finish();
+    }
+
 
 }

@@ -28,7 +28,7 @@ public class QuanAnModel implements Parcelable {
 
 
     List<ThucDonModel> thucDons;
-    Long luotthich;
+
 
     public List<ThucDonModel> getThucDons() {
         return thucDons;
@@ -152,6 +152,8 @@ public class QuanAnModel implements Parcelable {
     public void setTienich(List<String> tienich) {
         this.tienich = tienich;
     }
+
+    Long luotthich;
 
     public Long getLuotthich() {
         return luotthich;

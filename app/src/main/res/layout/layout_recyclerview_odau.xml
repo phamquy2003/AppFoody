@@ -72,7 +72,7 @@
             android:id="@+id/btnOderOdau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#F44336"
+            android:backgroundTint="@color/maincolor"
             android:text="@string/order"
             android:visibility="gone"
             android:textColor="@color/white"

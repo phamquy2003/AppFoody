@@ -48,8 +48,27 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="5dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/search_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="#AEA8A8"
+                        app:queryHint="Tìm kiếm sản phẩm"
+                        app:iconifiedByDefault="false"
+                        android:textAlignment="center" />
+                </androidx.cardview.widget.CardView>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerOdau"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
