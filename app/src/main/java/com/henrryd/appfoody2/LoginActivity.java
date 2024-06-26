@@ -20,6 +20,7 @@ import com.facebook.FacebookSdk;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.henrryd.appfoody2.Dialog.forgotPasswordDialog;
+import com.henrryd.appfoody2.View.Fragments.ThemQuanAnActivity;
 import com.henrryd.appfoody2.other.MyApplication;
 import com.henrryd.appfoody2.other.user;
 
